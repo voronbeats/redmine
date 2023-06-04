@@ -1,0 +1,74 @@
+.search-ajax {
+      
+    overflow: auto;
+      
+    background: #FFF;
+      
+      
+    box-shadow: 0 10px 13px #ccc;
+      
+    padding: 10px;
+  
+  }
+  
+   .search-ajax ul {
+    
+   padding: 0;
+    
+   margin: 0;
+    
+   width: 100%;
+    
+   list-style-type: none;
+  
+  }
+ 
+  .search-ajax ul li {
+  
+      text-decoration: underline;
+  
+  }
+  
+  
+  .search-ajax ul li span {
+    padding: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    display: table;
+  
+  } 
+  
+  
+  .span-text {
+  
+      color: #5a5a5a;
+  
+      font-size: 14px;
+  
+      float: left;
+  
+  }
+
+  .span-cat {
+  
+      font-size: 14px;
+  
+      margin-left: 5px;
+    
+      float: right;
+  
+  }
+  
+  
+  @media(max-width:720px) {
+  
+    .search-ajax {
+  
+       width: 100%;
+      
+             margin-left: 0;
+    
+  }
+  
+  }
+
