@@ -26,7 +26,7 @@ if (!Yii::$app->user->isGuest) {
 
 if(Yii::$app->controller->action->id != 'user') {
 
-    $rrr = '';
+    $rrr = '{view}';
 }
 ?>
 <div class="task-index">
