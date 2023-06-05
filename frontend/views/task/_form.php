@@ -1,5 +1,5 @@
 <?php
-
+use frontend\widget\Autocomplete;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\Url;
@@ -17,7 +17,7 @@ $this->registerCssFile('/css/style.css');
 $this->registerCssFile('/assest_all/calendar/jquery-ui.css');
 $this->registerJsFile('/assest_all/calendar/jquery-ui.js',
         ['depends' => [\yii\web\JqueryAsset::className()]]);
-$this->registerJsFile(Url::home(true).'js/script.js',
+$this->registerJsFile(Url::(true).'js/script.js',
         ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 <div class="labor-costs-form container">
@@ -27,7 +27,11 @@ $this->registerJsFile(Url::home(true).'js/script.js',
 
         <?= $form->field($model, 'status')->dropDownList(\common\models\Task::STATUS) ?>
 
-        <?= $form->field($model, 'prioritet')->textInput() ?>
+        <?= $form->field($model, 'prioritet')->dropDownList(\common\models\Task::PRIORITET) ?>
+        
+        <?=Autocomplete::widget(['task_id' => $model->parent_id, 'label' => 'Родительская задача'])?>
+
+        <?= $form->field($model, 'parent_id')->hiddenInput(['class' => 'form-control task-id'])->label(false)?>
 
         <?= $form->field($model, 'date_add')->widget(\yii\widgets\MaskedInput::className(), ['mask' => '9999.99.99 99:99:99'])->textInput(['class' => 'form-control datepicker'])?> 
 
@@ -35,7 +39,7 @@ $this->registerJsFile(Url::home(true).'js/script.js',
 
         <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 
-        <?= $form->field($model, 'ocenka_truda')->textInput(['maxlength' => true]) ?>
+        <!-- <?= $form->field($model, 'ocenka_truda')->textInput(['maxlength' => true]) ?> -->
 
         <?= $form->field($model, 'user_id')->dropDownList($users) ?>
 

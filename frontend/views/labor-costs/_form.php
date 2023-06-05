@@ -15,7 +15,7 @@ $this->registerJsFile('/js/site.js', ['depends' => [\yii\web\JqueryAsset::classN
 $this->registerCssFile('/assest_all/calendar/jquery-ui.css');
 $this->registerJsFile('/assest_all/calendar/jquery-ui.js',
         ['depends' => [\yii\web\JqueryAsset::className()]]);
-$this->registerJsFile(Url::home(true).'js/script.js',
+$this->registerJsFile(Url::(true).'js/script.js',
         ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 

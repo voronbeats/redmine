@@ -14,11 +14,14 @@ class TaskSearch extends Task
     /**
      * {@inheritdoc}
      */
+
+     public $author;
+     public $customer;
     public function rules()
     {
         return [
             [['id', 'status', 'prioritet', 'user_id', 'readliness'], 'integer'],
-            [['name', 'date_add', 'date_end', 'text', 'ocenka_truda'], 'safe'],
+            [['name', 'date_add', 'date_end', 'text', 'ocenka_truda', 'author', 'author_id', 'customer'], 'safe'],
         ];
     }
 
@@ -41,13 +44,26 @@ class TaskSearch extends Task
     public function search($params, $user_id = false)
     {
 
-        $query = Task::find();
+        $query = Task::find()->joinWith(@author)->joinWith(@customer);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+        // Сортировка по связной таблице
+        $dataProvider->sort->attributes['author'] = [
+            // The tables are the ones our relation are configured to
+            // in my case they are prefixed with "tbl_"
+            'asc' => ['user.username' => SORT_ASC],
+            'desc' => ['user.username' => SORT_DESC],
+        ];
+        $dataProvider->sort->attributes['customer'] = [
+            // The tables are the ones our relation are configured to
+            // in my case they are prefixed with "tbl_"
+            'asc' => ['user.username' => SORT_ASC],
+            'desc' => ['user.username' => SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -74,8 +90,11 @@ class TaskSearch extends Task
         }
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'text', $this->text])
+            ->andFilterWhere(['like', 'user.username', $this->author])
+            ->andFilterWhere(['like', 'user.username', $this->customer])
             ->andFilterWhere(['like', 'ocenka_truda', $this->ocenka_truda]);
 
         return $dataProvider;
     }
+   
 }

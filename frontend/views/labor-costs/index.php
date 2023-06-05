@@ -13,7 +13,6 @@ use yii\widgets\Pjax;
 
 $this->title = 'Трудозатраты';
 $this->params['breadcrumbs'][] = $this->title;
-
  
 ?>
 <div class="labor-costs-index">

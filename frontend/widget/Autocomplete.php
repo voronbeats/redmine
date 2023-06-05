@@ -10,6 +10,7 @@ use yii\helpers\Html;
 class Autocomplete extends Widget 
 {
     public $task_id;
+    public $label;
     public function run() {
         if($this->task_id) {
             if(!$taskName = Task::findOne($this->task_id)) {
@@ -21,7 +22,7 @@ class Autocomplete extends Widget
             $taskName = false;
         }
     
-        return $this->render('index', ['taskName' => $taskName]);
+        return $this->render('index', ['taskName' => $taskName, 'label' => $this->label]);
     }
     
 }

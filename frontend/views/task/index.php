@@ -55,11 +55,28 @@ if(Yii::$app->controller->action->id != 'user') {
             'id',
             'name',
             // 'status',
-            'prioritet',
+            ['attribute' => 'prioritet', 'filter' => \common\models\Task::PRIORITET, 'value' => @Prioritet],
             'date_add',
             //'date_end',
             ['attribute' => 'status', 'filter' => \common\models\Task::STATUS, 'value' => @Status],
-
+            ['attribute'=>'author','format'=>'raw','value'=> 
+            function($data) {
+              return '<span class="author_email">'.$data['author']['username'].'</span>';
+            },
+            'filterInputOptions' => [
+                'class' => 'form-control author_input', 
+                'id' => null,
+             ],
+            ],
+            ['attribute'=>'customer','format'=>'raw','value'=> 
+                function($data) {
+                return '<span class="author_email">'.$data['customer']['username'].'</span>';
+                },
+                'filterInputOptions' => [
+                    'class' => 'form-control author_input', 
+                    'id' => null,
+                ],
+            ],
             // 'text:text',
             // 'ocenka_truda',
             // 'user_id',

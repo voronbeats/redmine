@@ -3,16 +3,17 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use kartik\date\DatePicker;
+use yii\helpers\Url;
 
 /** @var yii\web\View $this */
 /** @var common\models\Task $model */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Tasks', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Задачи', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="task-view">
+<div class="task-view container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -31,16 +32,36 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
-            'status',
-            'prioritet',
+            'name',      
             'date_add',
             'date_end',
             'text:text',
             'ocenka_truda',
-            'user_id',
+            'Prioritet',
+            'Status',
+
+            ['attribute'=>'author','format'=>'raw','value'=> 
+               function($data) {
+                    return $data['author']['username'];
+              },
+           ],  
+            ['attribute'=>'customer','format'=>'raw','value'=> 
+                function($data) {
+                      return $data['customer']['username'];
+                },
+            ],
             'readliness',
         ],
     ]) ?>
 
+
+
+<? if($model->parent) {?>
+    <br><h2>Подзадачи:</h2>
+    <ul>
+    <? foreach($model->parent as $res) {?>   
+        <li><a href="<?=Url::to(['task/view', 'id'=>$res->id]);?>"><?=$res->name?></a></li>
+    <? }?>
+    </ul>
+<?}?>
 </div>
