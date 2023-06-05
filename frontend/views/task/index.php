@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-if(Yii::$app->user->identity->id) {
+if (!Yii::$app->user->isGuest) {
        $rrr = '{view} {update} {delete}';
      
 }else{
