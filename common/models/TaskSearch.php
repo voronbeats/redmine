@@ -76,7 +76,7 @@ class TaskSearch extends Task
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'status' => $this->status,
+            'task.status' => $this->status,
             'prioritet' => $this->prioritet,
             'date_add' => $this->date_add,
             'date_end' => $this->date_end,
