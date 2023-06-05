@@ -17,8 +17,7 @@ $this->registerCssFile('/css/style.css');
 $this->registerCssFile('/assest_all/calendar/jquery-ui.css');
 $this->registerJsFile('/assest_all/calendar/jquery-ui.js',
         ['depends' => [\yii\web\JqueryAsset::className()]]);
-$this->registerJsFile(Url::(true).'js/script.js',
-        ['depends' => [\yii\web\JqueryAsset::className()]]);
+
 ?>
 <div class="labor-costs-form container">
         <?php $form = ActiveForm::begin(); ?>
