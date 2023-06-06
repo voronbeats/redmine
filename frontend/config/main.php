@@ -16,6 +16,11 @@ return [
             'class' => 'frontend\modules\SearchTasks\SearchTasks',
         ],
     ],
+    'container' => [
+        'definitions' => [
+            \yii\widgets\LinkPager::class => \yii\bootstrap4\LinkPager::class,
+        ],
+    ],
     'components' => [
         'formatter' => [
             'dateFormat' => 'dd.MM.yyyy',
