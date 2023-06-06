@@ -12,6 +12,7 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Задачи', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+pr($id);
 ?>
 <div class="task-view container">
 
@@ -27,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('Трудозатраты', ['labor-costs/index'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Трудозатраты', ['labor-costs/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
         <? } ?>
     </p>
             

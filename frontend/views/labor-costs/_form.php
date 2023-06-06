@@ -15,16 +15,20 @@ $this->registerJsFile('/js/site.js', ['depends' => [\yii\web\JqueryAsset::classN
 $this->registerCssFile('/assest_all/calendar/jquery-ui.css');
 $this->registerJsFile('/assest_all/calendar/jquery-ui.js',
         ['depends' => [\yii\web\JqueryAsset::className()]]);
+ 
 ?>
 
 <div class="labor-costs-form container">
 
     <?php $form = ActiveForm::begin(); ?>
+    <?if(!$task) {?>
+         <?=Autocomplete::widget(['task_id' => $model->task_id])?>
+         <?= $form->field($model, 'task_id')->hiddenInput(['class' => 'form-control task-id'])->label(false)?>
+    <?}else{?>
 
-    <?=Autocomplete::widget(['task_id' => $model->task_id])?>
-
-    <?= $form->field($model, 'task_id')->hiddenInput(['class' => 'form-control task-id'])->label(false)?>
-
+        <?= Html::a($task->name, ['task/view', 'id' =>$task->id], ['target' => '_blank']) ?>
+        <?= $form->field($model, 'task_id')->hiddenInput(['class' => 'form-control task-id', 'value' =>$task->id])->label(false)?>
+    <?}?>
     <?= $form->field($model, 'date')->widget(\yii\widgets\MaskedInput::className(), ['mask' => '9999.99.99'])->textInput(['class' => 'form-control datepicker'])?> 
 
     <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
