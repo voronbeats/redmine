@@ -1,5 +1,6 @@
 <?php
 use frontend\widget\Autocomplete;
+use vova07\imperavi\Widget;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\Url;
@@ -36,7 +37,25 @@ $this->registerJsFile('/assest_all/calendar/jquery-ui.js',
 
         <?= $form->field($model, 'date_end')->widget(\yii\widgets\MaskedInput::className(), ['mask' => '9999.99.99 99:99:99'])->textInput(['class' => 'form-control datepicker'])?> 
 
-        <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'text')->widget(Widget::className(), [
+    'settings' => [
+        'lang' => 'ru',
+        'minHeight' => 200,
+    'formatting' => [
+    'h1','h2','p','blockquote'
+    ],
+        'plugins' => [
+            'clips',
+            'fullscreen',
+        ],
+    'imageUpload' => \yii\helpers\Url::to(['/site/save-redactor-img','sub'=>'blog']),
+        'clips' => [
+            ['Красный', '<span class="label-red">Здесь вставить текст</span>'],
+            ['Зеленый', '<span class="label-green">Здесь вставить текст</span>'],
+            ['Голубой', '<span class="label-blue">Здесь вставить текст</span>'],
+        ],
+    ],
+])->label('Текст')?>
 
         <!-- <?= $form->field($model, 'ocenka_truda')->textInput(['maxlength' => true]) ?> -->
 
