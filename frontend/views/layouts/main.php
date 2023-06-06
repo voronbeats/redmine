@@ -77,8 +77,8 @@ AppAsset::register($this);
         </header>
 
 <main role="main" class="flex-shrink-0">
-
         <?= Breadcrumbs::widget([
+            'homeLink' => ['label' => 'Главная', 'url' => '/'],
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
