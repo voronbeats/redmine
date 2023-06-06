@@ -14575,14 +14575,14 @@ html.rd-navbar-fixed-linked .page-header {
 .rd-navbar-classic.rd-navbar-static .rd-navbar-brand img {
 	width: auto;
 	height: auto;
-	max-width: 180px;
-	max-height: 180px;
+	max-width: 100px;
+	max-height: 100px;
 }
 
 @media (min-width: 1400px) {
 	.rd-navbar-classic.rd-navbar-static .rd-navbar-brand img {
-		max-width: 230px;
-		max-height: 230px;
+		max-width: 100px;
+		max-height: 100px;
 	}
 }
 
@@ -20232,4 +20232,8 @@ disabled look for disabled choices in the results dropdown
 .help-block {
 
 	color: red;
+}
+
+.brand img {
+    width: 150px;
 }
