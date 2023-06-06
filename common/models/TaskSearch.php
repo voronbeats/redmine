@@ -47,9 +47,12 @@ class TaskSearch extends Task
         $query = Task::find()->joinWith(@author)->joinWith(@customer);
 
         // add conditions that should always apply here
-
+     
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => ['id' => SORT_DESC],
+               ]
         ]);
         // Сортировка по связной таблице
         $dataProvider->sort->attributes['author'] = [
