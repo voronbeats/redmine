@@ -63,6 +63,11 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'image' => [
+           'class' => 'yii\image\ImageDriver',
+           'driver' => 'GD',  //GD or Imagick
+           //Если выйдет ошика, заиенить imagick на GD
+           ],
 		'urlManager' => [
             'class' => 'yii\web\UrlManager',
             'showScriptName' => false,
