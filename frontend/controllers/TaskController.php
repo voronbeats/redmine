@@ -52,11 +52,13 @@ class TaskController extends Controller
      */
     public function actionIndex()
     {
+        $users = $this->findUser();
         $searchModel = new TaskSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'users' => $users
         ]);
     }
 
