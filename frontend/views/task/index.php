@@ -11,8 +11,12 @@ use yii\widgets\Pjax;
 /** @var yii\web\View $this */
 /** @var common\models\TaskSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
+if (Yii::$app->controller->action->id == 'user') {
+    $this->title = 'Мои задачи';
+}else {
+    $this->title = 'Задачи';
+}
 
-$this->title = 'Задачи';
 $this->params['breadcrumbs'][] = $this->title;
 
 
