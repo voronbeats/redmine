@@ -1,7 +1,7 @@
 <?php
 
 namespace frontend\modules\SearchTasks\controllers;
-
+use Yii;
 use yii\web\Controller;
 use common\models\Task;
 
@@ -16,7 +16,7 @@ class DefaultController extends Controller
      */
     public function actionIndex($text)
     {   
-        $models = Task::find()->where(['id'=>$text])->orWhere(['LIKE','name',$text])->all();
+        $models = Task::find()->where(['id'=>$text])->orWhere(['LIKE','name',$text])->andWhere(['user_id' => Yii::$app->user->id])->all();
         $this->layout = false;
         return $this->render('index', compact('models'));
     }
