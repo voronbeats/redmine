@@ -7,7 +7,8 @@ use common\models\LaborCostsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use common\models\Task;
+use Yii;
 /**
  * LaborCostsController implements the CRUD actions for LaborCosts model.
  */
@@ -68,6 +69,15 @@ class LaborCostsController extends Controller
      */
     public function actionCreate()
     {
+
+        $get = Yii::$app->request->get('id');
+        if($get) {
+            $task = Task::findOne($get);
+        }else{
+            $task = false;
+        }
+
+        
         $model = new LaborCosts();
 
         if ($this->request->isPost) {
@@ -80,6 +90,7 @@ class LaborCostsController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'task' => $task
         ]);
     }
 
