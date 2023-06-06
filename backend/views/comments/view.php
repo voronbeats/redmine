@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use frontend\widget\Comments;
 
 /** @var yii\web\View $this */
 /** @var common\models\Comments $model */
@@ -30,12 +31,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'text:ntext',
-            'date',
-            'status',
             'user_id',
-            'news_id',
+            'text:ntext',
+            'date_add',
+            'task_id',
         ],
     ]) ?>
 
+
+
+<?=Comments::widget()?>
 </div>

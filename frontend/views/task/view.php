@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use kartik\date\DatePicker;
 use yii\helpers\Url;
-
+use frontend\widget\Com\Com;
 /** @var yii\web\View $this */
 /** @var common\models\Task $model */
 
@@ -66,4 +66,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <? }?>
     </ul>
 <?}?>
+
+
+
+<h3>Комментарии</h3>
+  
+<?=Com::widget()?>
+
 </div>
