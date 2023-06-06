@@ -9,7 +9,7 @@ use yii\helpers\Url;
 /** @var common\models\Task $model */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Задачи', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Мои задачи', 'url' => ['user']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
