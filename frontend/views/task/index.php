@@ -50,8 +50,6 @@ if(Yii::$app->controller->action->id != 'user') {
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'name',
             // 'status',
