@@ -32,9 +32,9 @@ $this->registerJsFile('/assest_all/calendar/jquery-ui.js',
 
         <?= $form->field($model, 'parent_id')->hiddenInput(['class' => 'form-control task-id'])->label(false)?>
 
-        <?= $form->field($model, 'date_add')->widget(\yii\widgets\MaskedInput::className(), ['mask' => '9999.99.99 99:99:99'])->textInput(['class' => 'form-control datepicker'])?> 
+        <?= $form->field($model, 'date_add')->widget(\yii\widgets\MaskedInput::className(), ['mask' => '9999-99-99 99:99'])->textInput(['class' => 'form-control datepicker'])?> 
 
-        <?= $form->field($model, 'date_end')->widget(\yii\widgets\MaskedInput::className(), ['mask' => '9999.99.99 99:99:99'])->textInput(['class' => 'form-control datepicker'])?> 
+        <?= $form->field($model, 'date_end')->widget(\yii\widgets\MaskedInput::className(), ['mask' => '9999-99-99 99:99'])->textInput(['class' => 'form-control datepicker'])?> 
 
         <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 
