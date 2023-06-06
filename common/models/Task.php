@@ -72,7 +72,6 @@ class Task extends \yii\db\ActiveRecord
     
     public function beforeSave($insert) {
         if (parent::beforeSave($insert)) {
-            $this->author_id = Yii::$app->user->id;
             if ($insert) {
                 $this->author_id = Yii::$app->user->id;
             }
