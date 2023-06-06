@@ -16,6 +16,11 @@ return [
             'class' => 'frontend\modules\SearchTasks\SearchTasks',
         ],
     ],
+    'container' => [
+        'definitions' => [
+            \yii\widgets\LinkPager::class => \yii\bootstrap4\LinkPager::class,
+        ],
+    ],
     'components' => [
         'formatter' => [
             'dateFormat' => 'dd.MM.yyyy',
@@ -63,6 +68,11 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'image' => [
+           'class' => 'yii\image\ImageDriver',
+           'driver' => 'GD',  //GD or Imagick
+           //Если выйдет ошика, заиенить imagick на GD
+           ],
 		'urlManager' => [
             'class' => 'yii\web\UrlManager',
             'showScriptName' => false,

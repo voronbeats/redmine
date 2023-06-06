@@ -32,6 +32,7 @@ if(Yii::$app->controller->action->id != 'user') {
 
     $rrr = '{view}';
 }
+
 ?>
 <div class="task-index">
     <div style="width:100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px;">
@@ -61,7 +62,7 @@ if(Yii::$app->controller->action->id != 'user') {
             'date_add',
             //'date_end',
             ['attribute' => 'status', 'filter' => \common\models\Task::STATUS, 'value' => @Status],
-            ['attribute'=>'author','format'=>'raw','value'=> 
+            ['attribute'=>'author','filter'=>$users, 'format'=>'raw','value'=> 
             function($data) {
               return '<span class="author_email">'.$data['author']['username'].'</span>';
             },
@@ -70,7 +71,7 @@ if(Yii::$app->controller->action->id != 'user') {
                 'id' => null,
              ],
             ],
-            ['attribute'=>'customer','format'=>'raw','value'=> 
+            ['attribute'=>'customer', 'filter'=>$users, 'format'=>'raw','value'=> 
                 function($data) {
                 return '<span class="author_email">'.$data['customer']['username'].'</span>';
                 },
