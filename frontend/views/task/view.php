@@ -27,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Трудозатраты', ['labor-costs/index'], ['class' => 'btn btn-success']) ?>
         <? } ?>
     </p>
             
