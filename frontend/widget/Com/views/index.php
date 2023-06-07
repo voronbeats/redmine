@@ -21,4 +21,8 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 <?}?>
 </div>
+
+<?foreach ($comments as $com) {?>
+    <?=$com->text?><br>
+<?}?>
 <?php Pjax::end(); ?>

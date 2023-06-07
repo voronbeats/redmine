@@ -70,7 +70,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 <h3>Комментарии</h3>
-  
-<?=Com::widget()?>
+<?=Com::widget(['task_id' => $model->id])?>
 
 </div>
