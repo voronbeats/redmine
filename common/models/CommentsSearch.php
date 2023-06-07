@@ -17,8 +17,8 @@ class CommentsSearch extends Comments
     public function rules()
     {
         return [
-            [['id', 'status', 'user_id', 'news_id'], 'integer'],
-            [['text', 'date'], 'safe'],
+            [['id', 'user_id', 'task_id'], 'integer'],
+            [['text', 'date_add'], 'safe'],
         ];
     }
 
@@ -59,10 +59,9 @@ class CommentsSearch extends Comments
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'date' => $this->date,
-            'status' => $this->status,
             'user_id' => $this->user_id,
-            'news_id' => $this->news_id,
+            'date_add' => $this->date_add,
+            'task_id' => $this->task_id,
         ]);
 
         $query->andFilterWhere(['like', 'text', $this->text]);

@@ -8,11 +8,10 @@ use Yii;
  * This is the model class for table "comments".
  *
  * @property int $id
+ * @property int|null $user_id
  * @property string|null $text
- * @property string|null $date
- * @property int|null $status
- * @property int $user_id
- * @property int $news_id
+ * @property string|null $date_add
+ * @property int|null $task_id
  */
 class Comments extends \yii\db\ActiveRecord
 {
@@ -30,13 +29,22 @@ class Comments extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['user_id', 'task_id'], 'integer'],
             [['text'], 'string'],
-            [['date'], 'safe'],
-            [['status', 'user_id', 'news_id'], 'integer'],
-            [['user_id', 'news_id'], 'required'],
+            [['date_add'], 'safe'],
         ];
     }
 
+    public function beforeSave($insert) {
+        if (parent::beforeSave($insert)) {
+            $this->user_id = Yii::$app->user->id;
+            if ($insert) {
+                $this->user_id = Yii::$app->user->id;
+            }
+            return true;
+        }
+        return false;
+    }
     /**
      * {@inheritdoc}
      */
@@ -44,11 +52,10 @@ class Comments extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'text' => 'Text',
-            'date' => 'Date',
-            'status' => 'Status',
             'user_id' => 'User ID',
-            'news_id' => 'News ID',
+            'text' => 'Text',
+            'date_add' => 'Date Add',
+            'task_id' => 'Task ID',
         ];
     }
 }
