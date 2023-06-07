@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',      
             'date_add',
             'date_end',
-            'text:text',
+            'text:raw',
             'ocenka_truda',
             'Prioritet',
             'Status',
