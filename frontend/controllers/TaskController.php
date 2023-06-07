@@ -61,13 +61,12 @@ class TaskController extends Controller
             'users' => $users
         ]);
     }
-
     public function actionUser()
     {
         /*$model->user->user_id*/
         // return $this->render('user'); 
 
-
+        $users = $this->findUser();
         $searchModel = new TaskSearch();
 
         if (!Yii::$app->user->id) {
@@ -79,6 +78,7 @@ class TaskController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'users' => $users
         ]);
     }
 
