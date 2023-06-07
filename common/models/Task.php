@@ -39,6 +39,7 @@ class Task extends \yii\db\ActiveRecord
         return [
             [['status', 'prioritet', 'user_id', 'readliness', 'author_id', 'parent_id'], 'integer'],
             [['date_add', 'date_end'], 'safe'],
+            ['date_add','default','value'=>date('Y-m-d H:i:s')],
             [['text'], 'string'],
             [['name', 'ocenka_truda'], 'string', 'max' => 200],
         ];
