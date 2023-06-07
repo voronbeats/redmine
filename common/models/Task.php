@@ -37,10 +37,12 @@ class Task extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+
             [['status', 'prioritet', 'user_id', 'readliness', 'author_id', 'parent_id'], 'integer'],
             [['date_add', 'date_end'], 'safe'],
             [['text'], 'string'],
-            [['name', 'ocenka_truda'], 'string', 'max' => 200],
+            [['name', 'ocenka_truda'], 'string', 'max' => 200], 
+            ['date_add','default','value'=> date('Y-m-d h:i:s')],
         ];
     }
 
