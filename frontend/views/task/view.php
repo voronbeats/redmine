@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use kartik\date\DatePicker;
 use yii\helpers\Url;
+use common\models\Task;
 use frontend\widget\Com\Com;
 /** @var yii\web\View $this */
 /** @var common\models\Task $model */
@@ -12,12 +13,15 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Мои задачи', 'url' => ['user']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+
+
 ?>
 <div class="task-view container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+        
         <? if($model->user_id == Yii::$app->user->id || $model->author_id == Yii::$app->user->id) {?>
         <?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
@@ -56,8 +60,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'readliness',
         ],
     ]) ?>
-
-
 
 <? if($model->parent) {?>
     <br><h2>Подзадачи:</h2>
