@@ -74,7 +74,7 @@ class TaskController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
-        $dataProvider = $searchModel->search($this->request->queryParams, Yii::$app->user->id);
+        $dataProvider = $searchModel->search($this->request->queryParams, Yii::$app->user->id, 'User');
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
