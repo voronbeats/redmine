@@ -28,10 +28,10 @@ function calendar() {
 
 
 function navbar() {
-	var current_url = window.location.href;
+	var current_url = window.location.pathname;
 	$('.page-header a').each(function () {
 		var link_url = $(this).attr('href');
-		if (current_url.indexOf(link_url) !== -1) {
+		if (link_url == current_url ) {
 			$(this).parent().addClass('active');
 		} else {
 			$(this).parent().removeClass('active');

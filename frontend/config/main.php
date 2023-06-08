@@ -78,7 +78,7 @@ return [
             'showScriptName' => false,
             'enablePrettyUrl' => true,
             'rules' =>[
-                '/index' => 'task/index',
+                '/' => 'task/index',
                 'searchtasks' => 'SearchTasks',
                 [
                     'pattern' => '<slug:.+>',
