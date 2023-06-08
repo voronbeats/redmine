@@ -31,7 +31,7 @@ $this->registerJsFile('/assest_all/calendar/jquery-ui.js',
 
     <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'time')->textInput(['maxlength' => true, 'type' => 'time']) ?>
+    <?= $form->field($model, 'time')->textInput(['maxlength' => true, 'type' => 'input']) ?>
 
    
 

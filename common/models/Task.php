@@ -97,6 +97,9 @@ class Task extends \yii\db\ActiveRecord
 	public function getAuthor() {
         return $this->hasOne(User::className(),['id'=>'user_id']);
     }
+    public function getLaborcost() {
+        return $this->hasMany(LaborCosts::className(),['task_id'=>'id']);
+    }
 
     public function getCustomer() {
         return $this->hasOne(User::className(),['id'=>'author_id']);
