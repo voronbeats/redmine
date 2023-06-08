@@ -33,6 +33,11 @@ if (Yii::$app->controller->action->id != 'user') {
     $rrr = '{view}';
 }
 
+$this->registerCssFile('/assest_all/calendar/jquery-ui.css');
+$this->registerJsFile(
+    '/assest_all/calendar/jquery-ui.js',
+    ['depends' => [\yii\web\JqueryAsset::className()]]
+);
 ?>
 <div class="task-index">
     <div
@@ -69,7 +74,14 @@ if (Yii::$app->controller->action->id != 'user') {
 
             // 'status',
             ['attribute' => 'prioritet', 'filter' => \common\models\Task::PRIORITET, 'value' => @Prioritet],
-            'date_add',
+            ['attribute'=>'date_add', 
+            'filterInputOptions' => [
+              'class' => 'form-control  datepicker index',
+              'id' => false,
+              'autocomplete' => 'off',
+
+          ],
+          ],
             //'date_end',
             ['attribute' => 'status', 'filter' => \common\models\Task::STATUS, 'value' => @Status],
             [
