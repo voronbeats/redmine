@@ -18,14 +18,16 @@ function calendar() {
 		$(".datepicker").datepicker({
 			dateFormat: 'yy-mm-dd',
 			onSelect: function (dateText, inst) {
-				var dt = new Date();
-				if (dt.getMinutes() < 10) {
-					var getMinutes= '0' + dt.getMinutes();
-				}else{
-					var getMinutes = dt.getMinutes();
-				}
-				var time = dt.getHours() + ":" + getMinutes;
-				$(this).val(dateText + ' ' + time);
+
+				 if (!$(this).hasClass("index")) {
+				   var dt = new Date();
+				   var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+				   $(this).val(dateText + ' ' + time);
+			   }else{
+				   $(this).val(dateText);
+				   $(this).trigger('change');
+			   }
+
 			}
 		});
 	}
