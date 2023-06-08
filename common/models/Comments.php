@@ -45,6 +45,10 @@ class Comments extends \yii\db\ActiveRecord
         }
         return false;
     }
+
+    public function getAuthor() {
+        return $this->hasOne(User::className(),['id'=>'user_id']);
+    }
     /**
      * {@inheritdoc}
      */

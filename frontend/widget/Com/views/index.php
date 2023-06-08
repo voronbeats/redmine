@@ -24,6 +24,7 @@ use yii\widgets\ActiveForm;
     <? if($comments) {?>
         <?foreach ($comments as $com) {?>
             <?=$com->text?><br>
+            <?=$com->author->username?><br>
         <?}?>
     <? }?>
 <?php Pjax::end(); ?>
