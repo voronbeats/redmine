@@ -19,7 +19,12 @@ function calendar() {
 			dateFormat: 'yy-mm-dd',
 			onSelect: function (dateText, inst) {
 				var dt = new Date();
-				var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+				if (dt.getMinutes() < 10) {
+					var getMinutes= '0' + dt.getMinutes();
+				}else{
+					var getMinutes = dt.getMinutes();
+				}
+				var time = dt.getHours() + ":" + getMinutes;
 				$(this).val(dateText + ' ' + time);
 			}
 		});
