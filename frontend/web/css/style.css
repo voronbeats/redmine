@@ -20237,3 +20237,11 @@ disabled look for disabled choices in the results dropdown
 .brand img {
     width: 150px;
 }
+
+.zadacha {
+	background: #ffb2f9;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
