@@ -31,10 +31,9 @@ class LaborCosts extends \yii\db\ActiveRecord
     {
         return [
             [['date', 'time', 'task_id'], 'required'],
-            [['user_id', 'task_id'], 'integer'],
+            [['user_id', 'task_id', 'time'], 'integer'],
             [['date'], 'safe'],
             [['comment'], 'string'],
-            [['time'], 'string', 'max' => 50],
         ];
     }
   
@@ -63,7 +62,7 @@ class LaborCosts extends \yii\db\ActiveRecord
             'user_id' => 'ID Пользователя',
             'date' => 'Дата',
             'comment' => 'Описание',
-            'time' => 'Время',
+            'time' => 'Часы (Количество)',
             'task_id' => 'ID Задачи',
         ];
     }
