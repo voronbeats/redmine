@@ -18,7 +18,8 @@ function calendar() {
 		$(".datepicker").datepicker({
 			dateFormat: 'yy-mm-dd',
 			onSelect: function (dateText, inst) {
-				if (!$(this).hasClass("index")) {
+
+				 if (!$(this).hasClass("index")) {
 				   var dt = new Date();
 				   var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
 				   $(this).val(dateText + ' ' + time);
@@ -26,6 +27,7 @@ function calendar() {
 				   $(this).val(dateText);
 				   $(this).trigger('change');
 			   }
+
 			}
 		});
 	}
