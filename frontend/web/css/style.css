@@ -20241,3 +20241,11 @@ disabled look for disabled choices in the results dropdown
 .table-striped tr td:last-child {
 	white-space: nowrap;
 }
+
+.zadacha {
+	background: #ffb2f9;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}

@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="task-view container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h5 class="zadacha"><?= Html::encode($this->title) ?></h5>
 
     <p>
         
