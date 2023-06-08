@@ -10,8 +10,6 @@ use yii\helpers\Url;
 /** @var yii\widgets\ActiveForm $form */
 
 $this->registerCssFile('/css/style.css');
-$this->registerJsFile('/js/site.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-
 $this->registerCssFile('/assest_all/calendar/jquery-ui.css');
 $this->registerJsFile('/assest_all/calendar/jquery-ui.js',
         ['depends' => [\yii\web\JqueryAsset::className()]]);
@@ -33,7 +31,7 @@ $this->registerJsFile('/assest_all/calendar/jquery-ui.js',
 
     <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'time')->textInput(['maxlength' => true, 'type' => 'time']) ?>
+    <?= $form->field($model, 'time')->textInput(['maxlength' => true, 'type' => 'input']) ?>
 
    
 

@@ -41,7 +41,7 @@ class TaskSearch extends Task
      *
      * @return ActiveDataProvider
      */
-    public function search($params, $user_id = false)
+    public function search($params, $user_id = false, $action = false)
     {
 
         $query = Task::find()->joinWith(@author)->joinWith(@customer);
@@ -81,7 +81,6 @@ class TaskSearch extends Task
             'id' => $this->id,
             'task.status' => $this->status,
             'prioritet' => $this->prioritet,
-            'date_add' => $this->date_add,
             'date_end' => $this->date_end,
             'user_id' => $this->user_id,
             'readliness' => $this->readliness,
@@ -91,11 +90,15 @@ class TaskSearch extends Task
                 'user_id' => $user_id, 
             ]);
         }
+        if ($action == 'User') {
+            $query->andFilterWhere(['!=', 'task.status', '5']); 
+        }
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'text', $this->text])
             ->andFilterWhere(['like', 'user_id', $this->author])
             ->andFilterWhere(['like', 'author_id', $this->customer])
-            ->andFilterWhere(['like', 'ocenka_truda', $this->ocenka_truda]);
+            ->andFilterWhere(['like', 'ocenka_truda', $this->ocenka_truda])
+            ->andFilterWhere(['like', 'date_add', $this->date_add]);
 
         return $dataProvider;
     }

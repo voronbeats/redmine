@@ -101,6 +101,10 @@ return [
             ],
             [
                 'allow' => true,
+                'actions' => ['signup'],
+            ],
+            [
+                'allow' => true,
                 'roles' => ['@'],
             ],
         ],

@@ -14699,7 +14699,7 @@ html.rd-navbar-fixed-linked .page-header {
 
 @media (min-width: 1400px) {
 	.rd-navbar-classic.rd-navbar-static .rd-nav-item + .rd-nav-item {
-		margin-left: 42px;
+		margin-left: 15px;
 	}
 }
 
@@ -20236,6 +20236,10 @@ disabled look for disabled choices in the results dropdown
 
 .brand img {
     width: 150px;
+}
+
+.table-striped tr td:last-child {
+	white-space: nowrap;
 }
 
 .zadacha {

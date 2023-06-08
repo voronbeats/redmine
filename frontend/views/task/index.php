@@ -13,7 +13,7 @@ use yii\widgets\Pjax;
 /** @var yii\data\ActiveDataProvider $dataProvider */
 if (Yii::$app->controller->action->id == 'user') {
     $this->title = 'Мои задачи';
-}else {
+} else {
     $this->title = 'Задачи';
 }
 
@@ -22,24 +22,30 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 if (!Yii::$app->user->isGuest) {
-       $rrr = '{view} {update} {delete}';
-     
-}else{
-   $rrr = '{view}';
+    $rrr = '{view} {update} {delete}';
+
+} else {
+    $rrr = '{view}';
 }
 
-if(Yii::$app->controller->action->id != 'user') {
+if (Yii::$app->controller->action->id != 'user') {
 
     $rrr = '{view}';
 }
 
+$this->registerCssFile('/assest_all/calendar/jquery-ui.css');
+$this->registerJsFile(
+    '/assest_all/calendar/jquery-ui.js',
+    ['depends' => [\yii\web\JqueryAsset::className()]]
+);
 ?>
 <div class="task-index">
-    <div style="width:100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px;">
+    <div
+        style="width:100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px;">
         <h1 style="font-weight: 400;">
             <?= Html::encode($this->title) ?>
 
-        </h1>       
+        </h1>
         <p>
             <?= Html::a('Создать задачу', ['create'], ['class' => 'btn btn-primary custom-btn']) ?>
         </p>
@@ -49,34 +55,58 @@ if(Yii::$app->controller->action->id != 'user') {
     <?php
 
     // echo $this->render('_search', ['model' => $searchModel]); ?>
-    
-    
+
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             'id',
-            'name',
+            [
+                'attribute' => 'name', 'format'=>'raw',
+    
+                'value' =>
+                function ($model) {
+                    return Html::a($model->name, ['task/view', 'id' => $model->id],['target' => '_blank', 'data-pjax' => 0]);
+
+                },
+            ],
+
             // 'status',
             ['attribute' => 'prioritet', 'filter' => \common\models\Task::PRIORITET, 'value' => @Prioritet],
-            'date_add',
+            ['attribute'=>'date_add', 
+            'filterInputOptions' => [
+              'class' => 'form-control  datepicker index',
+              'id' => false,
+              'autocomplete' => 'off',
+
+          ],
+          ],
             //'date_end',
             ['attribute' => 'status', 'filter' => \common\models\Task::STATUS, 'value' => @Status],
-            ['attribute'=>'author','filter'=>$users, 'format'=>'raw','value'=> 
-            function($data) {
-              return '<span class="author_email">'.$data['author']['username'].'</span>';
-            },
-            'filterInputOptions' => [
-                'class' => 'form-control author_input', 
-                'id' => null,
-             ],
-            ],
-            ['attribute'=>'customer', 'filter'=>$users, 'format'=>'raw','value'=> 
-                function($data) {
-                return '<span class="author_email">'.$data['customer']['username'].'</span>';
+            [
+                'attribute' => 'author',
+                'filter' => $users,
+                'format' => 'raw',
+                'value' =>
+                function ($data) {
+                    return '<span class="author_email">' . $data['author']['username'] . '</span>';
                 },
                 'filterInputOptions' => [
-                    'class' => 'form-control author_input', 
+                    'class' => 'form-control author_input',
+                    'id' => null,
+                ],
+            ],
+            [
+                'attribute' => 'customer',
+                'filter' => $users,
+                'format' => 'raw',
+                'value' =>
+                function ($data) {
+                    return '<span class="author_email">' . $data['customer']['username'] . '</span>';
+                },
+                'filterInputOptions' => [
+                    'class' => 'form-control author_input',
                     'id' => null,
                 ],
             ],
