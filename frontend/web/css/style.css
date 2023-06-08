@@ -20237,3 +20237,7 @@ disabled look for disabled choices in the results dropdown
 .brand img {
     width: 150px;
 }
+
+.table-striped tr td:last-child {
+	white-space: nowrap;
+}
