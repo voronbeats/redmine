@@ -12,7 +12,7 @@ use yii\widgets\Pjax;
 /** @var common\models\LaborCostsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Трудозатраты';
+$this->title = 'Статистика';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="labor-costs-index">
