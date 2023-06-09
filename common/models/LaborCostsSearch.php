@@ -5,6 +5,7 @@ namespace common\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\LaborCosts;
+use yii;https://redmine.dumz.ru/task/view?id=78
 
 /**
  * LaborCostsSearch represents the model behind the search form of `common\models\LaborCosts`.
@@ -58,7 +59,7 @@ class LaborCostsSearch extends LaborCosts
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        $query->andFilterWhere(['user_id' => Yii::$app->user->id]); 
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
