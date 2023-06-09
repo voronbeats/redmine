@@ -5,7 +5,7 @@ namespace common\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\LaborCosts;
-use yii;
+use yii;https://redmine.dumz.ru/task/view?id=78
 
 /**
  * LaborCostsSearch represents the model behind the search form of `common\models\LaborCosts`.
