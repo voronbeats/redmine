@@ -23,7 +23,6 @@ $this->registerJsFile('/assest_all/calendar/jquery-ui.js',
          <?=Autocomplete::widget(['task_id' => $model->task_id])?>
          <?= $form->field($model, 'task_id')->hiddenInput(['class' => 'form-control task-id'])->label(false)?>
     <?}else{?>
-
         <?= Html::a($task->name, ['task/view', 'id' =>$task->id], ['target' => '_blank']) ?>
         <?= $form->field($model, 'task_id')->hiddenInput(['class' => 'form-control task-id', 'value' =>$task->id])->label(false)?>
     <?}?>

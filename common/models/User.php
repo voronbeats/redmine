@@ -211,4 +211,28 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+    public function getTasksmonth() {
+        return $this->hasMany(Task::className(),['user_id'=>'id'])->where(['Like', 'date_add', date('Y-m')]);
+    }
+
+    public function getTasksmonthprev() {
+        return $this->hasMany(Task::className(),['user_id'=>'id'])->where(['Like', 'date_add', date("Y-m", strtotime("-1 months"))]);
+    }
+
+
+
+    public function getLcostsmonth() {
+        return $this->hasMany(LaborCosts::className(),['user_id'=>'id'])->select('time')->where(['Like', 'date', date('Y-m')])->asArray();
+    }
+    
+    public function getLcostsmonthprev() {
+        return $this->hasMany(LaborCosts::className(),['user_id'=>'id'])->select('time')->where(['Like', 'date', date("Y-m", strtotime("-1 months"))])->asArray();
+    }
+
+    public function CountSum($array) {
+        foreach($array as $res) {
+            $array[] = $res['time'];
+        }
+        return array_sum($array);
+    }
 }

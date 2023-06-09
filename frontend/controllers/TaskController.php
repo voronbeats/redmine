@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\models\Task;
 use common\models\User;
+use common\models\Tgram;
 use common\models\TaskSearch;
 use yii\web\Controller;
 use yii\web\JsExpression;

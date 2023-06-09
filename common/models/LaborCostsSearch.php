@@ -47,7 +47,7 @@ class LaborCostsSearch extends LaborCosts
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => [
-                'defaultOrder' => ['created_at' => SORT_DESC],
+                'defaultOrder' => ['id' => SORT_DESC],
               ],
         ]);
 

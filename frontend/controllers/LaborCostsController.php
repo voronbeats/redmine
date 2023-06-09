@@ -1,7 +1,7 @@
 <?php
 
 namespace frontend\controllers;
-
+use common\models\User;
 use common\models\LaborCosts;
 use common\models\LaborCostsSearch;
 use yii\web\Controller;
@@ -67,12 +67,10 @@ class LaborCostsController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
+    public function actionCreate($id = false)
     {
-
-        $get = Yii::$app->request->get('id');
-        if($get) {
-            $task = Task::findOne($get);
+        if($id) {
+            $task = Task::findOne($id);
         }else{
             $task = false;
         }
@@ -114,6 +112,19 @@ class LaborCostsController extends Controller
         ]);
     }
 
+    public function actionStatics() {
+        
+        $users = $this->findUsersAll();
+        $searchModel = new LaborCostsSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+
+        return $this->render('statics', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'users' => $users,
+        ]);
+    }
+
     /**
      * Deletes an existing LaborCosts model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -143,4 +154,32 @@ class LaborCostsController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    protected function findUser()
+    {
+        if (($model = User::find()->select(['id', 'username'])->asArray()->All())) {
+            foreach ($model as $res) {
+                $array[$res['id']] = $res['username'];
+
+            }
+
+            return $array;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+
+    
+    protected function findUsersAll()
+    {
+        if ($models = User::find()->All()) {
+
+            return $models;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
 }
+
+

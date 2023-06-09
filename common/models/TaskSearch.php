@@ -90,8 +90,10 @@ class TaskSearch extends Task
                 'user_id' => $user_id, 
             ]);
         }
+        //Фильтр строк по определенным параметрам(пропадание строки в экшн (В задачах))//
         if ($action == 'User') {
             $query->andFilterWhere(['!=', 'task.status', '5']); 
+            $query->andFilterWhere(['!=', 'task.status', '4']);
         }
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'text', $this->text])
