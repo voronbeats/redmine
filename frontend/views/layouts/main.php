@@ -51,18 +51,20 @@ AppAsset::register($this);
                         </ul>
                       </div>
                       <ul class="rd-navbar-nav">
-                        <li class="rd-nav-item"><a class="rd-nav-link" href="/">Домой</a></li>
+                        <li class="rd-nav-item"><i class="fa fa-home" aria-hidden="true"></i><a class="rd-nav-link" href="/">Домой</a></li>
                         <li class="rd-nav-item"><a class="rd-nav-link" href="/labor-costs/statics">Статистика</a></li>
                         <? if (!Yii::$app->user->isGuest) { ?>
                           <li class="rd-nav-item">
+                            <i class="fa fa-user"></i>
                             <a style="margin-left: 5px; margin-right: 5px;" class="rd-nav-link" href="/task/user">Мои задачи</a>
-                        </li>
+                          </li>
                        <? } ?>
-                        <li class="rd-nav-item"><a class="rd-nav-link" href="/task/create">Создание задачи</a></li>
-                        
-                        <li class="rd-nav-item"><a class="rd-nav-link" href="/labor-costs">Создание трудозатрат</a></li>
+                       
+                        <li class="rd-nav-item"><i class="fa fa-pencil" aria-hidden="true"></i><a class="rd-nav-link" href="/task/create">Создание задачи</a></li>
+                        <li class="rd-nav-item"><i class="fa fa-book" aria-hidden="true"></i><a class="rd-nav-link" href="/labor-costs">Создание трудозатрат</a></li>
                         <li class="rd-nav-item">
                         <? if (!Yii::$app->user->isGuest) { ?>
+                          <i class="fa fa-share"></i>
                                 <a><?= Html::a(
                                     'Выход',
                                     ['/site/logout'],
