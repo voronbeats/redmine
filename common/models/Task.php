@@ -29,7 +29,7 @@ class Task extends \yii\db\ActiveRecord
      */
      public $userArrayTgm = array(
       '1' => '401681157',
-      '2' => '',
+      '2' => '1058780968',
       '3' => '1890429333',
       '4' => '1502076419',
       '6' => '1215251289',
