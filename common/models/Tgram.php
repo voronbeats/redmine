@@ -46,7 +46,7 @@ class Tgram extends Model
             [
                 'chat_id' => $chat_id,
                 'text' => $text,
-             //   'parse_mode' => "html",
+                'parse_mode' => 'html',
   
             ]
         );

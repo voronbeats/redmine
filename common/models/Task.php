@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "task".
@@ -102,8 +103,7 @@ class Task extends \yii\db\ActiveRecord
                $text = 'Здравствуйте, у вас обновлена задача:' ;
             }
             $text .= "\n";
-            $text .= strip_tags($this->name);
-   
+            $text .= '<a href="' . 'http://redmine.dumz.ru/task/view?id='.$this->id . '">'.$this->name.'</a>';
             $tgm->sendTelegram($text, $this->userArrayTgm[$this->user_id]);
       
     }
