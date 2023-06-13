@@ -51,7 +51,7 @@ AppAsset::register($this);
                         </ul>
                       </div>
                       <ul class="rd-navbar-nav">
-                        <li class="rd-nav-item"><i class="fa fa-home" aria-hidden="true"></i><a class="rd-nav-link" href="/">Домой</a></li>
+                        <li class="rd-nav-item"><i class="fa fa-home" aria-hidden="true"></i><a class="rd-nav-link" href="/">Список задач</a></li>
                         <li class="rd-nav-item"><a class="rd-nav-link" href="/labor-costs/statics">Статистика</a></li>
                         <? if (!Yii::$app->user->isGuest) { ?>
                           <li class="rd-nav-item">
