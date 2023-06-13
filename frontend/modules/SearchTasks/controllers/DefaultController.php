@@ -16,7 +16,7 @@ class DefaultController extends Controller
      */
     public function actionIndex($text)
     {   
-        $models = Task::find()->where(['id'=>$text])->orWhere(['LIKE','name',$text])->andWhere(['user_id' => Yii::$app->user->id])->all();
+        $models = Task::find()->where(['id'=>$text])->orWhere(['LIKE','name',$text])->all();
         $this->layout = false;
         return $this->render('index', compact('models'));
     }
