@@ -55,7 +55,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     </tr> 
                     
                         <?foreach($res->tasksmonth as $task) {?>
-                            <tr><td><?=$res->countSum($task->laborcost)?></td><td><?=$task->name?></td></tr>  
+                            <tr>
+                                <!--Создание сыллки-->
+                                <td><?=$res->countSum($task->laborcost)?></td><td>
+                                <a href='<?=Url::to(['task/view', 'id'=>$task->id]) ?>'target='_blank'><?=$task->name?></a>
+                            </td>
+                        </tr>  
                         <?}?>
                     
                     </table>
