@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use common\models\Task;
 
 /**
  * This is the model class for table "labor_costs".
@@ -48,9 +49,6 @@ class LaborCosts extends \yii\db\ActiveRecord
         }
         return false;
     }
-    
-       
-    
 
     /**
      * {@inheritdoc}
@@ -65,5 +63,9 @@ class LaborCosts extends \yii\db\ActiveRecord
             'time' => 'Часы (Количество)',
             'task_id' => 'ID Задачи',
         ];
+    }
+    public function getTask()
+    {
+        return $this->hasOne(Task::className(), ['id' => 'task_id']);
     }
 }
