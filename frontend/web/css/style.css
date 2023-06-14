@@ -20255,3 +20255,7 @@ disabled look for disabled choices in the results dropdown
 .fa {
 	font-style: normal;
 }
+
+.summary {
+	margin: 20px;
+}
