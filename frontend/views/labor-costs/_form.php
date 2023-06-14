@@ -9,7 +9,6 @@ use yii\helpers\Url;
 /** @var common\models\LaborCosts $model */
 /** @var yii\widgets\ActiveForm $form */
 
-$this->registerCssFile('/css/style.css');
 $this->registerCssFile('/assest_all/calendar/jquery-ui.css');
 $this->registerJsFile('/assest_all/calendar/jquery-ui.js',
         ['depends' => [\yii\web\JqueryAsset::className()]]);

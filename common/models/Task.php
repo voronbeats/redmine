@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\helpers\Html;
+use common\models\Notification;
 
 /**
  * This is the model class for table "task".
@@ -96,15 +97,23 @@ class Task extends \yii\db\ActiveRecord
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
+
             $tgm = new Tgram();
+            $notif = new Notification();
             if ($insert) {
                $text = 'Здравствуйте, у вас есть новая задача:' ;
+               
             }else{
                $text = 'Здравствуйте, у вас обновлена задача:' ;
             }
             $text .= "\n";
             $text .= '<a href="' . 'http://redmine.dumz.ru/task/view?id='.$this->id . '">'.$this->name.'</a>';
+            $notif->text = ($text);
+            $notif->date_add = date('Y-m-d h:i:s');
+            $notif->user_id = $this->user_id;
             $tgm->sendTelegram($text, $this->userArrayTgm[$this->user_id]);
+            $notif->flag = '0';
+            $notif->save();
       
     }
 
