@@ -24,6 +24,8 @@ return [
     'components' => [
         'formatter' => [
             'dateFormat' => 'dd.MM.yyyy',
+            'class' => 'yii\i18n\Formatter',
+            'nullDisplay' => 'Не заполнено',
         ],
         'calendar' => [
             'class' => 'understeam\calendar\ActiveRecordCalendar',  // Имя класса календаря
