@@ -41,7 +41,7 @@ $this->registerJsFile(
                     'id' => null,
                 ],
             ],
-            'text:ntext',
+            'text:raw',
             ['attribute'=>'date_add', 
             'filterInputOptions' => [
               'class' => 'form-control  datepicker index',
