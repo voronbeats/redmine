@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\models\Tgram;
 use Yii;
 
 /**
@@ -15,6 +16,15 @@ use Yii;
  */
 class Comments extends \yii\db\ActiveRecord
 {
+
+    public $userArrayTgm = array(
+        '1' => '401681157',
+        '2' => '1058780968',
+        '3' => '1890429333',
+        '4' => '1502076419',
+        '6' => '1215251289',
+        '8' => '6070325005'
+       );
     /**
      * {@inheritdoc}
      */
@@ -57,5 +67,15 @@ class Comments extends \yii\db\ActiveRecord
             'date_add' => 'Date Add',
             'task_id' => 'Task ID',
         ];
+    }
+
+    public function afterSave($insert, $changedAttributes) {
+        $tgm = new Tgram();
+        $text .= 'Появился комментарий у задачи: <a href="' . 'http://redmine.dumz.ru/task/view?id='.$this->task_id . '">'.$this->task->name.'</a>';
+        $tgm->sendTelegram($text, $this->userArrayTgm[$this->task->user_id]);
+    }
+
+    public function getTask() {
+        return $this->hasOne(Task::className(),['id'=>'task_id']);
     }
 }
