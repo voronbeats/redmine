@@ -60,8 +60,9 @@ AppAsset::register($this);
                           </li>
                        <? } ?>
                        
-                        <li class="rd-nav-item"><i class="fa fa-pencil" aria-hidden="true"></i><a class="rd-nav-link" href="/task/create">Создание задачи</a></li>
+                        
                         <li class="rd-nav-item"><i class="fa fa-book" aria-hidden="true"></i><a class="rd-nav-link" href="/labor-costs">Создание трудозатрат</a></li>
+                        <li class="rd-nav-item"><a class="btn btn-success success" href="/task/create"><i class="fa fa-pencil " aria-hidden="true"></i> Создание задачи</li></a>
                         <li class="rd-nav-item">
                         <? if (!Yii::$app->user->isGuest) { ?>
                           <i class="fa fa-share"></i>
