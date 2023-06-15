@@ -37,7 +37,7 @@ AppAsset::register($this);
                     <!-- RD Navbar Toggle-->
                     <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                     <!-- RD Navbar Brand-->
-                    <div class="rd-navbar-brand"><a class="brand" href="/"><img src="/images/nowawersja.png" alt="" /></a></div>
+                    <div  class="rd-navbar-brand "><a  class="brand" href="/"><img src="https://cdn-icons-png.flaticon.com/128/4552/4552651.png" alt=""  /></a></div>
                   </div>
                   <div class="rd-navbar-main-element">
                     <div class="rd-navbar-nav-wrap">
