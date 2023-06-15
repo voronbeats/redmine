@@ -14522,9 +14522,9 @@ html.rd-navbar-fixed-linked .page-header {
 
 @media (min-width: 1200px) {
 	.rd-navbar-classic.rd-navbar-static .rd-navbar-main {
-		padding-top: 24px;
+		padding-top: 10px;
 		padding-right: 68px;
-		padding-bottom: 20px;
+		padding-bottom: 9px;
 	}
 	.rd-navbar-classic.rd-navbar-static .rd-navbar-main.active {
 		padding-right: 150px;
@@ -20255,3 +20255,4 @@ disabled look for disabled choices in the results dropdown
 .fa {
 	font-style: normal;
 }
+ 
