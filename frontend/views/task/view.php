@@ -23,15 +23,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         
         <? if($model->user_id == Yii::$app->user->id || $model->author_id == Yii::$app->user->id) {?>
-        <?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary test']) ?>
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
+            'class' => 'btn btn-danger test test2',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('Трудозатраты', ['labor-costs/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Трудозатраты', ['labor-costs/create', 'id' => $model->id], ['class' => 'btn btn-success test test3 ']) ?>
         <? } ?>
     </p>
             
