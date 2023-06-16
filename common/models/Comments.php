@@ -71,7 +71,7 @@ class Comments extends \yii\db\ActiveRecord
 
     public function afterSave($insert, $changedAttributes) {
         $tgm = new Tgram();
-        $text .= 'Появился комментарий у задачи: <a href="' . 'http://redmine.dumz.ru/task/view?id='.$this->task_id . '">'.$this->task->name.'</a>';
+        $text = 'Появился комментарий у задачи: <a href="' . 'http://redmine.dumz.ru/task/view?id='.$this->task_id . '">'.$this->task->name.'</a>';
         $tgm->sendTelegram($text, $this->userArrayTgm[$this->task->user_id]);
     }
 
