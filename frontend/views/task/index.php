@@ -28,8 +28,9 @@ if (!Yii::$app->user->isGuest) {
     $rrr = '{view}';
 }
 
+$authorHidden = false;
 if (Yii::$app->controller->action->id != 'user') {
-
+    $authorHidden = true;
     $rrr = '{view}';
 }
 
@@ -40,8 +41,7 @@ $this->registerJsFile(
 );
 ?>
 <div class="task-index">
-    <div
-        style="width:100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px;">
+    <div>
         <h1 style="font-weight: 400;">
             <?= Html::encode($this->title) ?>
 
@@ -52,9 +52,7 @@ $this->registerJsFile(
     </div>
 
     <?php Pjax::begin(); ?>
-    <?php
 
-    // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 
     <?= GridView::widget([
@@ -63,31 +61,34 @@ $this->registerJsFile(
         'columns' => [
             'id',
             [
-                'attribute' => 'name', 'format'=>'raw',
-    
+                'attribute' => 'name',
+                'format' => 'raw',
+
                 'value' =>
                 function ($model) {
-                    return Html::a($model->name, ['task/view', 'id' => $model->id],['target' => '_blank', 'data-pjax' => 0]);
+                    return Html::a($model->name, ['task/view', 'id' => $model->id], ['target' => '_blank', 'data-pjax' => 0]);
 
                 },
             ],
 
             // 'status',
             ['attribute' => 'prioritet', 'filter' => \common\models\Task::PRIORITET, 'value' => @Prioritet],
-            ['attribute'=>'date_add', 
-            'filterInputOptions' => [
-              'class' => 'form-control  datepicker index',
-              'id' => false,
-              'autocomplete' => 'off',
+            [
+                'attribute' => 'date_add',
+                'filterInputOptions' => [
+                    'class' => 'form-control  datepicker index',
+                    'id' => false,
+                    'autocomplete' => 'off',
 
-          ],
-          ],
+                ],
+            ],
             //'date_end',
             ['attribute' => 'status', 'filter' => \common\models\Task::STATUS, 'value' => @Status],
             [
                 'attribute' => 'author',
                 'filter' => $users,
                 'format' => 'raw',
+                'visible' => $authorHidden,
                 'value' =>
                 function ($data) {
                     return '<span class="author_email">' . $data['author']['username'] . '</span>';
@@ -97,6 +98,9 @@ $this->registerJsFile(
                     'id' => null,
                 ],
             ],
+            
+            
+            
             [
                 'attribute' => 'customer',
                 'filter' => $users,

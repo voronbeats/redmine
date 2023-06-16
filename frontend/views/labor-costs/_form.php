@@ -9,7 +9,6 @@ use yii\helpers\Url;
 /** @var common\models\LaborCosts $model */
 /** @var yii\widgets\ActiveForm $form */
 
-$this->registerCssFile('/css/style.css');
 $this->registerCssFile('/assest_all/calendar/jquery-ui.css');
 $this->registerJsFile('/assest_all/calendar/jquery-ui.js',
         ['depends' => [\yii\web\JqueryAsset::className()]]);
@@ -19,7 +18,7 @@ $this->registerJsFile('/assest_all/calendar/jquery-ui.js',
 <div class="labor-costs-form container">
 
     <?php $form = ActiveForm::begin(); ?>
-    <?if(!$task) {?>
+    <?if(!isset($task)) {?>
          <?=Autocomplete::widget(['task_id' => $model->task_id])?>
          <?= $form->field($model, 'task_id')->hiddenInput(['class' => 'form-control task-id'])->label(false)?>
     <?}else{?>

@@ -4,16 +4,16 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var common\models\LaborCosts $model */
+/** @var common\models\Notification $model */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Labor Costs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Notifications', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="labor-costs-view">
+<div class="notification-view">
 
-    <h1><?= Html::encode($model->task->name) ?></h1>
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -29,12 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            // 'id',
+            'id',
+            'text:ntext',
+            'date_add',
+            'flag',
             'user_id',
-            'date',
-            'comment:ntext',
-            'time',
-            'task_id',
         ],
     ]) ?>
 

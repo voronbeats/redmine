@@ -3,6 +3,7 @@
 namespace frontend\widget\Com;
 
 
+use common\models\Task;
 use yii\base\Widget;
 use yii\widgets\ActiveForm;
 use Yii;
@@ -34,7 +35,7 @@ class Com extends Widget
         
     }
 
-
+    
 
     function findComments() {
         if ($comments = Comments::find()->where(['task_id' => $this->task_id])->orderBy(['id' => SORT_DESC])->All()) {
@@ -42,6 +43,7 @@ class Com extends Widget
         }
         return '';
     } 
+    
 }
 
 ?>

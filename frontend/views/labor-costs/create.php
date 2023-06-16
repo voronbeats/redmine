@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /** @var common\models\LaborCosts $model */
 
 $this->title = 'Создание трудозатрат';
-$this->params['breadcrumbs'][] = ['label' => 'Labor Costs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Трудозатраты', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div  class="labor-costs-create container">

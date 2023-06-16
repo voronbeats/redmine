@@ -1,18 +1,19 @@
 <?php
 
 namespace frontend\controllers;
-use common\models\User;
-use common\models\LaborCosts;
-use common\models\LaborCostsSearch;
+
+use yii;
+use common\models\Notification;
+use common\models\NotificationSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use common\models\Task;
-use Yii;
+use common\models\User;
+
 /**
- * LaborCostsController implements the CRUD actions for LaborCosts model.
+ * NotificationController implements the CRUD actions for Notification model.
  */
-class LaborCostsController extends Controller
+class NotificationController extends Controller
 {
     /**
      * @inheritDoc
@@ -33,50 +34,48 @@ class LaborCostsController extends Controller
     }
 
     /**
-     * Lists all LaborCosts models.
+     * Lists all Notification models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        
-        $searchModel = new LaborCostsSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $users = $this->findUser();
+        $searchModel = new NotificationSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams, Yii::$app->user->id, 'user_id');
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'users' => $users,
         ]);
     }
 
     /**
-     * Displays a single LaborCosts model.
+     * Displays a single Notification model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-     public function actionView($id)
-     {
-         return $this->render('view', [
-             'model' => $this->findModel($id),
-         ]);
-     }
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
 
     /**
-     * Creates a new LaborCosts model.
+     * Creates a new Notification model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate($id = false)
+    public function actionCreate()
     {
-
-        $task = Task::findOne($id);
-
-        $model = new LaborCosts();
+        $model = new Notification();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['index']);
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -84,12 +83,11 @@ class LaborCostsController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'task' => $task
         ]);
     }
 
     /**
-     * Updates an existing LaborCosts model.
+     * Updates an existing Notification model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -100,7 +98,7 @@ class LaborCostsController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -108,21 +106,8 @@ class LaborCostsController extends Controller
         ]);
     }
 
-    public function actionStatics() {
-        
-        $users = $this->findUsersAll();
-        $searchModel = new LaborCostsSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-
-        return $this->render('statics', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-            'users' => $users,
-        ]);
-    }
-
     /**
-     * Deletes an existing LaborCosts model.
+     * Deletes an existing Notification model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -135,16 +120,21 @@ class LaborCostsController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionFlagUpdate($array) {
+        $array = explode(',', $array);
+        Notification::updateAll( ['flag' => 1], ['id'=>$array]);
+    }
+
     /**
-     * Finds the LaborCosts model based on its primary key value.
+     * Finds the Notification model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return LaborCosts the loaded model
+     * @return Notification the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = LaborCosts::findOne(['id' => $id])) !== null) {
+        if (($model = Notification::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
@@ -164,18 +154,4 @@ class LaborCostsController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-
-    
-    protected function findUsersAll()
-    {
-        if ($models = User::find()->All()) {
-
-            return $models;
-        }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
-    }
 }
-
-

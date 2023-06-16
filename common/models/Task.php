@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\helpers\Html;
+use common\models\Notification;
 
 /**
  * This is the model class for table "task".
@@ -22,7 +23,7 @@ use yii\helpers\Html;
 class Task extends \yii\db\ActiveRecord
 {
 
-    const STATUS = ['0' => 'Ожидает', '1' => 'В работе', '2' => 'На проверке', '3' => 'Проверка кода', '4' => 'Отклонена', '5' => 'Завершена', '6' => 'К релизу'];
+    const STATUS = ['0' => 'Ожидает', '1' => 'В работе', '2' => 'На проверке', '3' => 'Проверка кода', '4' => 'Отклонена', '5' => 'Завершена', '6' => 'К релизу', '7' => 'Возобновлена'];
     const PRIORITET = ['0' => 'Нормальный', '1' => 'Срочный', '2' => 'Очень срочно'];
     /**
      * {@inheritdoc}
@@ -51,7 +52,7 @@ class Task extends \yii\db\ActiveRecord
             [['status', 'prioritet', 'user_id', 'readliness', 'author_id', 'parent_id'], 'integer'],
             [['date_add', 'date_end'], 'safe'],
             ['date_add','default','value'=>date('Y-m-d H:i:s')],
-            [['text'], 'string'],
+            [['text'], 'string',],          
             [['name', 'ocenka_truda'], 'string', 'max' => 200], 
             ['date_add','default','value'=> date('Y-m-d h:i:s')],
         ];
@@ -88,7 +89,11 @@ class Task extends \yii\db\ActiveRecord
             if ($insert) {
                 $this->author_id = Yii::$app->user->id;
             }
+            if (!$this->text) {
+                $this->text = $this->name;
+            }
             return true;
+
         }
         return false;
     }
@@ -96,22 +101,30 @@ class Task extends \yii\db\ActiveRecord
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
+
             $tgm = new Tgram();
+            $notif = new Notification();
             if ($insert) {
                $text = 'Здравствуйте, у вас есть новая задача:' ;
+               
             }else{
                $text = 'Здравствуйте, у вас обновлена задача:' ;
             }
             $text .= "\n";
             $text .= '<a href="' . 'http://redmine.dumz.ru/task/view?id='.$this->id . '">'.$this->name.'</a>';
+            $notif->text = ($text);
+            $notif->date_add = date('Y-m-d h:i:s');
+            $notif->user_id = $this->user_id;
             $tgm->sendTelegram($text, $this->userArrayTgm[$this->user_id]);
+            $notif->flag = '0';
+            $notif->save();
       
     }
 
 
     public function getStatus()
     {
-        $array = ['0' => 'Ожидает', '1' => 'В работе', '2' => 'На проверке', '3' => 'Проверка кода', '4' => 'Отклонена', '5' => 'Завершена', '6' => 'К релизу'];
+        $array = ['0' => 'Ожидает', '1' => 'В работе', '2' => 'На проверке', '3' => 'Проверка кода', '4' => 'Отклонена', '5' => 'Завершена', '6' => 'К релизу', '7' => 'Возобновлена'];
         return $array[$this->status];
     }
 

@@ -4,13 +4,12 @@ namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\LaborCosts;
-use yii;https://redmine.dumz.ru/task/view?id=78
+use common\models\Notification;
 
 /**
- * LaborCostsSearch represents the model behind the search form of `common\models\LaborCosts`.
+ * NotificationSearch represents the model behind the search form of `common\models\Notification`.
  */
-class LaborCostsSearch extends LaborCosts
+class NotificationSearch extends Notification
 {
     /**
      * {@inheritdoc}
@@ -18,8 +17,8 @@ class LaborCostsSearch extends LaborCosts
     public function rules()
     {
         return [
-            [['id', 'user_id', 'task_id'], 'integer'],
-            [['date', 'comment', 'time'], 'safe'],
+            [['id', 'flag', 'user_id'], 'integer'],
+            [['text', 'date_add'], 'safe'],
         ];
     }
 
@@ -39,9 +38,9 @@ class LaborCostsSearch extends LaborCosts
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $user_id = false)
     {
-        $query = LaborCosts::find();
+        $query = Notification::find();
 
         // add conditions that should always apply here
 
@@ -49,7 +48,7 @@ class LaborCostsSearch extends LaborCosts
             'query' => $query,
             'sort' => [
                 'defaultOrder' => ['id' => SORT_DESC],
-              ],
+               ]
         ]);
 
         $this->load($params);
@@ -59,17 +58,20 @@ class LaborCostsSearch extends LaborCosts
             // $query->where('0=1');
             return $dataProvider;
         }
-        $query->andFilterWhere(['user_id' => Yii::$app->user->id]); 
+        if($user_id) {
+            $query->andFilterWhere([
+                'user_id' => $user_id, 
+            ]);
+        }
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'flag' => $this->flag,
             'user_id' => $this->user_id,
-            'date' => $this->date,
-            'task_id' => $this->task_id,
         ]);
 
-        $query->andFilterWhere(['like', 'comment', $this->comment])
-            ->andFilterWhere(['like', 'time', $this->time]);
+        $query->andFilterWhere(['like', 'text', $this->text]);
+        $query->andFilterWhere(['like', 'date_add', $this->date_add]);
 
         return $dataProvider;
     }
