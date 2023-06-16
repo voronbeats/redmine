@@ -20255,6 +20255,7 @@ disabled look for disabled choices in the results dropdown
 .fa {
 	font-style: normal;
 }
+
 .red {
 	color: red;
 }
@@ -20284,4 +20285,9 @@ disabled look for disabled choices in the results dropdown
 	flex-direction: column;
 	border-radius: 50%;
 	max-width: max-content;
+}
+
+.summary {
+	margin: 20px;
+
 }

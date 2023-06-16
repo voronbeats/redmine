@@ -52,7 +52,7 @@ class Task extends \yii\db\ActiveRecord
             [['status', 'prioritet', 'user_id', 'readliness', 'author_id', 'parent_id'], 'integer'],
             [['date_add', 'date_end'], 'safe'],
             ['date_add','default','value'=>date('Y-m-d H:i:s')],
-            [['text'], 'string'],
+            [['text'], 'string',],          
             [['name', 'ocenka_truda'], 'string', 'max' => 200], 
             ['date_add','default','value'=> date('Y-m-d h:i:s')],
         ];
@@ -89,7 +89,11 @@ class Task extends \yii\db\ActiveRecord
             if ($insert) {
                 $this->author_id = Yii::$app->user->id;
             }
+            if (!$this->text) {
+                $this->text = $this->name;
+            }
             return true;
+
         }
         return false;
     }
