@@ -229,6 +229,13 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasMany(LaborCosts::className(),['user_id'=>'id'])->select('time')->where(['Like', 'date', date("Y-m", strtotime("-1 months"))])->asArray();
     }
 
+    public function UserGrafik($user_id, $date) {
+        return Grafik::find()->where(['date' => $date])->andWhere(['user_id' => $user_id])->asArray()->One();
+    }
+
+    public function UserProgul($user_id, $date) {
+        return Progul::find()->where(['date' => $date])->andWhere(['user_id' => $user_id])->asArray()->One();
+    }
     public function CountSum($array) {
         foreach($array as $res) {
             $array[] = $res['time'];
