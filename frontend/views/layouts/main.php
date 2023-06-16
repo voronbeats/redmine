@@ -37,7 +37,7 @@ AppAsset::register($this);
                     <!-- RD Navbar Toggle-->
                     <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                     <!-- RD Navbar Brand-->
-                    <div class="rd-navbar-brand"><a class="brand" href="/"><img src="/images/nowawersja.png" alt="" /></a></div>
+                    <div  class="rd-navbar-brand "><a  class="brand" href="/"><img src="https://cdn-icons-png.flaticon.com/128/4552/4552651.png" alt=""  /></a></div>
                   </div>
                   <div class="rd-navbar-main-element">
                     <div class="rd-navbar-nav-wrap">
@@ -51,7 +51,7 @@ AppAsset::register($this);
                         </ul>
                       </div>
                       <ul class="rd-navbar-nav">
-                        <li class="rd-nav-item"><i class="fa fa-home" aria-hidden="true"></i><a class="rd-nav-link" href="/">Домой</a></li>
+                        <li class="rd-nav-item"><i class="fa fa-home" aria-hidden="true"></i><a class="rd-nav-link" href="/">Список задач</a></li>
                         <li class="rd-nav-item"><a class="rd-nav-link" href="/labor-costs/statics">Статистика</a></li>
                         <? if (!Yii::$app->user->isGuest) { ?>
                           <li class="rd-nav-item">
@@ -60,8 +60,9 @@ AppAsset::register($this);
                           </li>
                        <? } ?>
                        
-                        <li class="rd-nav-item"><i class="fa fa-pencil" aria-hidden="true"></i><a class="rd-nav-link" href="/task/create">Создание задачи</a></li>
+                       
                         <li class="rd-nav-item"><i class="fa fa-book" aria-hidden="true"></i><a class="rd-nav-link" href="/labor-costs">Создание трудозатрат</a></li>
+                        <li class="rd-nav-item"><a class="btn btn-success success" href="/task/create"><i class="fa fa-pencil " aria-hidden="true"></i> Создание задачи</li></a>
                         <li class="rd-nav-item">
                         <? if (!Yii::$app->user->isGuest) { ?>
                           <i class="fa fa-share"></i>
