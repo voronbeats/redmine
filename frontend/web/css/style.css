@@ -20249,3 +20249,7 @@ disabled look for disabled choices in the results dropdown
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+.btn btn-primary custom-btn {
+	margin-left: 750px;
+}

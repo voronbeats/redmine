@@ -47,7 +47,7 @@ $this->registerJsFile(
 
         </h1>
         <p>
-            <?= Html::a('Создать задачу', ['create'], ['class' => 'btn btn-primary custom-btn']) ?>
+            <?= Html::a('Создать задачу', ['create'], ['class' => 'btn btn-primary custom-btn']  )  ?>
         </p>
     </div>
 
