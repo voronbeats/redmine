@@ -28,8 +28,9 @@ if (!Yii::$app->user->isGuest) {
     $rrr = '{view}';
 }
 
+$authorHidden = false;
 if (Yii::$app->controller->action->id != 'user') {
-
+    $authorHidden = true;
     $rrr = '{view}';
 }
 
@@ -51,9 +52,7 @@ $this->registerJsFile(
     </div>
 
     <?php Pjax::begin(); ?>
-    <?php
 
-    // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 
     <?= GridView::widget([
@@ -89,6 +88,7 @@ $this->registerJsFile(
                 'attribute' => 'author',
                 'filter' => $users,
                 'format' => 'raw',
+                'visible' => $authorHidden,
                 'value' =>
                 function ($data) {
                     return '<span class="author_email">' . $data['author']['username'] . '</span>';
@@ -98,6 +98,9 @@ $this->registerJsFile(
                     'id' => null,
                 ],
             ],
+            
+            
+            
             [
                 'attribute' => 'customer',
                 'filter' => $users,
