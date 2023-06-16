@@ -42,9 +42,9 @@ class Progul extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
-            'date' => 'Date',
-            'text' => 'Text',
+            'user_id' => 'Прогульщик',
+            'date' => 'Дата',
+            'text' => 'Причина',
         ];
     }
 }
