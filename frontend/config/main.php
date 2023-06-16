@@ -119,6 +119,10 @@ return [
             ],
             [
                 'allow' => true,
+                'actions' => ['save'],
+            ],
+            [
+                'allow' => true,
                 'roles' => ['@'],
             ],
         ],
