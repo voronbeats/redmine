@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="labor-costs-index">
 
-    <div style="display: flex; width: 100%; justify-content: center; flex-direction: column; align-items: center; padding: 10px;">
+<div class="center">
         <h1 style="font-weight: 400;"><?= Html::encode($this->title) ?></h1>
 
         <p>

@@ -15,7 +15,7 @@ class AppAsset extends AssetBundle
           '//fonts.googleapis.com/css?family=Poppins:400,500,600%7CTeko:300,400,500%7CMaven+Pro:500',
 		  'css/fonts.css',
 		  'css/style.css',
-
+          'css/site.css',
     ];
     public $js = [
 	'js/core.min.js',

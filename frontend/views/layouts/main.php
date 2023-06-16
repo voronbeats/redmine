@@ -47,60 +47,69 @@ AppAsset::register($this);
               <!-- RD Navbar Toggle-->
               <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
               <!-- RD Navbar Brand-->
-              <div class="rd-navbar-brand "><a class="brand" href="/"><img
-                    src="https://cdn-icons-png.flaticon.com/128/4552/4552651.png" alt="" /></a></div>
-            </div>
+              <div class="rd-navbar-brand ">
+                  <a class="brand" href="/">
+                    <i class="fa fa-cube" aria-hidden="true"></i>
+                  </a>
+              </div>
+              </div>
             <div class="rd-navbar-main-element">
               <div class="rd-navbar-nav-wrap">
                 <!-- RD Navbar Share-->
 
                 <ul class="rd-navbar-nav">
-                  <li class="rd-nav-item"><i class="fa fa-home" aria-hidden="true"></i> <a class="rd-nav-link"
-                      href="/">Список задач</a></li>
-                  <li class="rd-nav-item"><a class="rd-nav-link" href="/labor-costs/statics">Статистика</a></li>
+                  <li class="rd-nav-item">
+                     <a class="rd-nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i>  Список задач</a></li>
+                  <li class="rd-nav-item">
+                    <a class="rd-nav-link" href="/labor-costs/statics"><i class="fa fa-line-chart" aria-hidden="true"></i> Статистика</a>
+                  </li>
                   <? if (!Yii::$app->user->isGuest) { ?>
-                    <li class="rd-nav-item">
-                      <i class="fa fa-user"></i> <a style="margin-left: 5px; margin-right: 5px;" class="rd-nav-link"
-                        href="/task/user">Мои задачи</a>
-                    </li>
+                  <li class="rd-nav-item">
+                        <a style="margin-left: 5px; margin-right: 5px;" class="rd-nav-link" href="/task/user"><i class="fa fa-user"></i>  Мои задачи</a>
+                  </li>
                   <? } ?>
-                  <li class="rd-nav-item"><a class="btn btn-success success" href="/task/create"><i
-                        class="fa fa-pencil " aria-hidden="true"></i> Создание задачи</li></a>
-                  <li class="rd-nav-item"><i class="fa fa-book" aria-hidden="true"></i> <a class="rd-nav-link"
-                      href="/labor-costs">Трудозатраты</a></li>
-
-
+                  <li class="rd-nav-item"> <a class="rd-nav-link" href="/labor-costs"><i class="fa fa-book" aria-hidden="true"></i> Трудозатраты</a>
+                  </li>
                   <li class="rd-nav-item">
                     <? if (!Yii::$app->user->isGuest) { ?>
-                      <i class="fa fa-share"></i> <a>
+                    
                         <?= Html::a(
-                          'Выход',
+                          '<i class="fa fa-times" aria-hidden="true"></i> Выход',
                           ['/site/logout'],
                           ['data-method' => 'post', 'class' => 'rd-nav-link']
                         ) ?>
-                      </a>
                     <? } else { ?>
                       <a class="rd-nav-link" href="/site/login">Войти</a>
                     <? } ?>
                   </li>
-                  <? if (!Yii::$app->user->isGuest) { ?>
-                    <li class="rd-nav-item">
-                      <?= Notif::widget() ?>
-                    </li>
-                  <? } ?>
                 </ul>
+                
               </div>
+              <? if (!Yii::$app->user->isGuest) { ?>
+                <div class="add-adaptive">
+                      <div class="not-div-class">
+                         <?= Notif::widget() ?>
+                      </div>
+                      <div class="not-a">
+                         <a class="btn btn-success success" href="/task/create">
+                          <i class="fa fa-pencil " aria-hidden="true"></i> Создание задачи</a>
+                      </div>
+              </div>
+              <? } ?>
             </div>
           </div>
         </div>
       </nav>
+     
     </div>
+
   </header>
-  <main role="main" class="flex-shrink-0">
+  
     <?= Breadcrumbs::widget([
       'homeLink' => ['label' => 'Главная', 'url' => '/'],
       'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
     ]) ?>
+    <main role="main" class="flex-shrink-0 padding-20">
     <?= Alert::widget() ?>
     <?= $content ?>
   </main>

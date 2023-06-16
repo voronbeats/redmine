@@ -3,7 +3,10 @@ use yii\widgets\Pjax;
 use yii\helpers\Url;
 
 ?>
-<div class="dropdown show">
+
+
+
+<div class="dropdown dropleft ">
 
   <a class="btn notif-button  notification-click" href="#" role="button" id="dropdownMenuLink"
     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -13,7 +16,7 @@ use yii\helpers\Url;
     <?php Pjax::end(); ?>
   </a>
 
-<div class="dropdown-menu notif" aria-labelledby="dropdownMenuLink">
+<div class="dropdown-menu notif" aria-labelledby="dropdownMenuLink" >
  <?php Pjax::begin(['id' => 'pjax-click']); ?>
   <? if ($models) { ?>
         <ul class="ul-notif">
@@ -33,4 +36,5 @@ use yii\helpers\Url;
 
   <? } ?>
   <?php Pjax::end(); ?>
+  </div>
   </div>

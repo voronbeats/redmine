@@ -41,7 +41,7 @@ $this->registerJsFile(
 );
 ?>
 <div class="task-index">
-    <div>
+    <div class="center">
         <h1 style="font-weight: 400;">
             <?= Html::encode($this->title) ?>
 
