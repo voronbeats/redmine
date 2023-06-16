@@ -20251,6 +20251,20 @@ disabled look for disabled choices in the results dropdown
 }
 
 
+.rd-navbar-classic.rd-navbar-static .rd-navbar-brand img {
+	height: 60px;
+	width: 60px;
+	margin-left: 15px;
+}
+
+.test {
+	margin-bottom: 10px;
+}
+
+.test2 , .test3 {
+	margin-left: 10px;
+
+
 
 .fa {
 	font-style: normal;
@@ -20289,5 +20303,4 @@ disabled look for disabled choices in the results dropdown
 
 .summary {
 	margin: 20px;
-
 }
