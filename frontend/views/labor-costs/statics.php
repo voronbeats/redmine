@@ -79,10 +79,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     <tr>    
                         <th>Часы</th>
                         <th>Название задачи</th>  
+                        <th>статус задачи</th> 
                    </tr>    
                    
-                        <?foreach($res->tasksmonthprev as $task) {?>
-                            <tr> <td><?=$res->countSum($task->laborcost)?></td><td><?=$task->name?></td></tr>
+                   <?foreach($res->tasksmonth as $task) {?>
+                            <tr>
+                               <td><?=$res->countSum($task->laborcost)?></td>
+                               <td><?=$task->name?></td>
+                               <td><?=Task::STATUS[$task->status]?></td>
+                            </tr>  
                         <?}?>
                    
                     </table>
