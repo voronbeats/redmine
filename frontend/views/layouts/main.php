@@ -16,91 +16,110 @@ AppAsset::register($this);
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">
+
 <head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <?php $this->registerCsrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
+  <meta charset="<?= Yii::$app->charset ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <?php $this->registerCsrfMetaTags() ?>
+  <title>
+    <?= Html::encode($this->title) ?>
+  </title>
+  <?php $this->head() ?>
 </head>
+
 <body class="d-flex flex-column h-100">
-<?php $this->beginBody() ?>
+  <?php $this->beginBody() ?>
 
 
-	     <header class="section page-header">
-          <!-- RD Navbar-->
-          <div class="rd-navbar-wrap">
-            <nav class="rd-navbar rd-navbar-classic" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
-              <div class="rd-navbar-main-outer">
-                <div class="rd-navbar-main">
-                  <!-- RD Navbar Panel-->
-                  <div class="rd-navbar-panel">
-                    <!-- RD Navbar Toggle-->
-                    <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
-                    <!-- RD Navbar Brand-->
-                    <div  class="rd-navbar-brand "><a  class="brand" href="/"><img src="https://cdn-icons-png.flaticon.com/128/4552/4552651.png" alt=""  /></a></div>
-                  </div>
-                  <div class="rd-navbar-main-element">
-                    <div class="rd-navbar-nav-wrap">
-                      <!-- RD Navbar Share-->
-                  
-                      <ul class="rd-navbar-nav">
+  <header class="section page-header">
+    <!-- RD Navbar-->
+    <div class="rd-navbar-wrap">
+      <nav class="rd-navbar rd-navbar-classic" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed"
+        data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static"
+        data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static"
+        data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static"
+        data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px"
+        data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+        <div class="rd-navbar-main-outer">
+          <div class="rd-navbar-main">
+            <!-- RD Navbar Panel-->
+            <div class="rd-navbar-panel">
+              <!-- RD Navbar Toggle-->
+              <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+              <!-- RD Navbar Brand-->
+              <div class="rd-navbar-brand "><a class="brand" href="/"><img
+                    src="https://cdn-icons-png.flaticon.com/128/4552/4552651.png" alt="" /></a></div>
+            </div>
+            <div class="rd-navbar-main-element">
+              <div class="rd-navbar-nav-wrap">
+                <!-- RD Navbar Share-->
 
-                        <li class="rd-nav-item"><i class="fa fa-home" aria-hidden="true"></i> <a class="rd-nav-link" href="/">Домой</a></li>
-                        <li class="rd-nav-item"><i class="fa fa-home" aria-hidden="true"></i><a class="rd-nav-link" href="/">Список задач</a></li>
-                        <li class="rd-nav-item"><a class="rd-nav-link" href="/labor-costs/statics">Статистика</a></li>
-                        <? if (!Yii::$app->user->isGuest) { ?>
-                          <li class="rd-nav-item">
-                          <i class="fa fa-user"></i> <a style="margin-left: 5px; margin-right: 5px;" class="rd-nav-link" href="/task/user">Мои задачи</a>
-                          </li>
-                       <? } ?>
-                       
+                <ul class="rd-navbar-nav">
 
-                       
-                        <li class="rd-nav-item"><i class="fa fa-book" aria-hidden="true"></i><a class="rd-nav-link" href="/labor-costs">Создание трудозатрат</a></li>
-                        <li class="rd-nav-item"><a class="btn btn-success success" href="/task/create"><i class="fa fa-pencil " aria-hidden="true"></i> Создание задачи</li></a>
-                        <li class="rd-nav-item"><i class="fa fa-book" aria-hidden="true"></i> <a class="rd-nav-link" href="/labor-costs">Трудозатраты</a></li>
+                  <li class="rd-nav-item"><i class="fa fa-home" aria-hidden="true"></i> <a class="rd-nav-link"
+                      href="/">Домой</a></li>
+                  <li class="rd-nav-item"><i class="fa fa-home" aria-hidden="true"></i><a class="rd-nav-link"
+                      href="/">Список задач</a></li>
+                  <li class="rd-nav-item"><a class="rd-nav-link" href="/labor-costs/statics">Статистика</a></li>
+                  <? if (!Yii::$app->user->isGuest) { ?>
+                    <li class="rd-nav-item">
+                      <i class="fa fa-user"></i> <a style="margin-left: 5px; margin-right: 5px;" class="rd-nav-link"
+                        href="/task/user">Мои задачи</a>
+                    </li>
+                  <? } ?>
 
 
-                        <li class="rd-nav-item">
-                        <? if (!Yii::$app->user->isGuest) { ?>
-                          <i class="fa fa-share"></i>  <a><?= Html::a(
-                                    'Выход',
-                                    ['/site/logout'],
-                                    ['data-method' => 'post', 'class' => 'rd-nav-link']
-                                ) ?></a>
-                          <? }else{ ?>
-                            <a class="rd-nav-link" href="/site/login">Войти</a>         
-                            <?}?>
-                        </li>
-                        <li class="rd-nav-item">
-                       
-                           <?=Notif::widget()?>
 
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>       
-            </nav>      
-          </div>    
-        </header>
-<main role="main" class="flex-shrink-0">
-        <?= Breadcrumbs::widget([
-            'homeLink' => ['label' => 'Главная', 'url' => '/'],
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-</main>
-<footer class="footer mt-auto py-3 text-muted">
+                  <li class="rd-nav-item"><i class="fa fa-book" aria-hidden="true"></i><a class="rd-nav-link"
+                      href="/labor-costs">Создание трудозатрат</a></li>
+                  <li class="rd-nav-item"><a class="btn btn-success success" href="/task/create"><i
+                        class="fa fa-pencil " aria-hidden="true"></i> Создание задачи</li></a>
+                  <li class="rd-nav-item"><i class="fa fa-book" aria-hidden="true"></i> <a class="rd-nav-link"
+                      href="/labor-costs">Трудозатраты</a></li>
+
+
+                  <li class="rd-nav-item">
+                    <? if (!Yii::$app->user->isGuest) { ?>
+                      <i class="fa fa-share"></i> <a>
+                        <?= Html::a(
+                          'Выход',
+                          ['/site/logout'],
+                          ['data-method' => 'post', 'class' => 'rd-nav-link']
+                        ) ?>
+                      </a>
+                    <? } else { ?>
+                      <a class="rd-nav-link" href="/site/login">Войти</a>
+                    <? } ?>
+                  </li>
+                  <? if (!Yii::$app->user->isGuest) { ?>
+                    <li class="rd-nav-item">
+                      <?= Notif::widget() ?>
+                    </li>
+                  <? } ?>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main role="main" class="flex-shrink-0">
+    <?= Breadcrumbs::widget([
+      'homeLink' => ['label' => 'Главная', 'url' => '/'],
+      'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+    ]) ?>
+    <?= Alert::widget() ?>
+    <?= $content ?>
+  </main>
+  <footer class="footer mt-auto py-3 text-muted">
     <div class="container">
-        <!--<p class="float-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
+      <!--<p class="float-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
         <p class="float-right"><?= Yii::powered() ?></p>-->
     </div>
-</footer>
-<?php $this->endBody() ?>
+  </footer>
+  <?php $this->endBody() ?>
 </body>
+
 </html>
 <?php $this->endPage();
