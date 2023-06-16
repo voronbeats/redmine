@@ -29,6 +29,7 @@ class Comments extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['text'], 'required'],
             [['user_id', 'task_id'], 'integer'],
             [['text'], 'string'],
             [['date_add'], 'safe'],
