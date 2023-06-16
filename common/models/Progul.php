@@ -30,7 +30,6 @@ class Progul extends \yii\db\ActiveRecord
         return [
             [['user_id'], 'integer'],
             [['date'], 'safe'],
-            [['text'], 'required'],
             [['text'], 'string'],
         ];
     }
