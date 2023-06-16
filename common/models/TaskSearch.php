@@ -78,7 +78,7 @@ class TaskSearch extends Task
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
+            'task.id' => $this->id,
             'task.status' => $this->status,
             'prioritet' => $this->prioritet,
             'date_end' => $this->date_end,
@@ -92,8 +92,10 @@ class TaskSearch extends Task
         }
         //Фильтр строк по определенным параметрам(пропадание строки в экшн (В задачах))//
         if ($action == 'User') {
-            $query->andFilterWhere(['!=', 'task.status', '5']); 
-            $query->andFilterWhere(['!=', 'task.status', '4']);
+            $query->andFilterWhere(['!=', 'task.status', 5]); 
+            if($this->status != 4) {
+               $query->andFilterWhere(['!=', 'task.status', '4']);
+            } 
         }
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'text', $this->text])

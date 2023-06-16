@@ -20256,6 +20256,38 @@ disabled look for disabled choices in the results dropdown
 	font-style: normal;
 }
 
+.red {
+	color: red;
+}
+
+.notif {
+	margin-top: 5px;
+	text-align: center;
+	animation-name: op;
+	animation-duration: 0.5s;
+	border: none;
+	background-color: rgba(128,128,128, 0.2);
+	
+}
+
+@keyframes op {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.notif-button {
+	background-color: rgba(0,0,0,0.2);
+	display: flex;
+	flex-direction: column;
+	border-radius: 50%;
+	max-width: max-content;
+}
+
 .summary {
 	margin: 20px;
+
 }

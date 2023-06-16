@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\helpers\Html;
+use common\models\Notification;
 
 /**
  * This is the model class for table "task".
@@ -22,7 +23,7 @@ use yii\helpers\Html;
 class Task extends \yii\db\ActiveRecord
 {
 
-    const STATUS = ['0' => 'Ожидает', '1' => 'В работе', '2' => 'На проверке', '3' => 'Проверка кода', '4' => 'Отклонена', '5' => 'Завершена', '6' => 'К релизу'];
+    const STATUS = ['0' => 'Ожидает', '1' => 'В работе', '2' => 'На проверке', '3' => 'Проверка кода', '4' => 'Отклонена', '5' => 'Завершена', '6' => 'К релизу', '7' => 'Возобновлена'];
     const PRIORITET = ['0' => 'Нормальный', '1' => 'Срочный', '2' => 'Очень срочно'];
     /**
      * {@inheritdoc}
@@ -100,22 +101,30 @@ class Task extends \yii\db\ActiveRecord
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
+
             $tgm = new Tgram();
+            $notif = new Notification();
             if ($insert) {
                $text = 'Здравствуйте, у вас есть новая задача:' ;
+               
             }else{
                $text = 'Здравствуйте, у вас обновлена задача:' ;
             }
             $text .= "\n";
             $text .= '<a href="' . 'http://redmine.dumz.ru/task/view?id='.$this->id . '">'.$this->name.'</a>';
+            $notif->text = ($text);
+            $notif->date_add = date('Y-m-d h:i:s');
+            $notif->user_id = $this->user_id;
             $tgm->sendTelegram($text, $this->userArrayTgm[$this->user_id]);
+            $notif->flag = '0';
+            $notif->save();
       
     }
 
 
     public function getStatus()
     {
-        $array = ['0' => 'Ожидает', '1' => 'В работе', '2' => 'На проверке', '3' => 'Проверка кода', '4' => 'Отклонена', '5' => 'Завершена', '6' => 'К релизу'];
+        $array = ['0' => 'Ожидает', '1' => 'В работе', '2' => 'На проверке', '3' => 'Проверка кода', '4' => 'Отклонена', '5' => 'Завершена', '6' => 'К релизу', '7' => 'Возобновлена'];
         return $array[$this->status];
     }
 

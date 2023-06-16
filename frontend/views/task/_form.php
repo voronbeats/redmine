@@ -15,7 +15,7 @@ $this->registerJsFile('/js/site.js', ['depends' => [\yii\web\JqueryAsset::classN
 $time = date_parse_from_format("Y-m-d H:iP ", $model->date_add);
 $date = ($time['year'] . '-' . $time['month'] . '-' . $time['day'] . 'T' . $time['hour'] . ':' . $time['minute']);
 
-$this->registerCssFile('/css/style.css');
+
 $this->registerCssFile('/assest_all/calendar/jquery-ui.css');
 $this->registerJsFile(
     '/assest_all/calendar/jquery-ui.js',
