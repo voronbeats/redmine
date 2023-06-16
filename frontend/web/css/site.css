@@ -19,7 +19,6 @@ i {
 .not-div-class {
     display: table;
     border: 1px solid;
-    border-radius: 3px;
     margin-right: 15px;
 }
 

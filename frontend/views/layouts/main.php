@@ -92,7 +92,7 @@ AppAsset::register($this);
                       </div>
                       <div class="not-a">
                          <a class="btn btn-success success" href="/task/create">
-                          <i class="fa fa-pencil " aria-hidden="true"></i> Создание задачи</a>
+                          <i class="fa fa-pencil " aria-hidden="true"></i></a>
                       </div>
               </div>
               <? } ?>
