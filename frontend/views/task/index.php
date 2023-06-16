@@ -85,19 +85,6 @@ $this->registerJsFile(
             //'date_end',
             ['attribute' => 'status', 'filter' => \common\models\Task::STATUS, 'value' => @Status],
             [
-                'attribute' => 'author',
-                'filter' => $users,
-                'format' => 'raw',
-                'value' =>
-                function ($data) {
-                    return '<span class="author_email">' . $data['author']['username'] . '</span>';
-                },
-                'filterInputOptions' => [
-                    'class' => 'form-control author_input',
-                    'id' => null,
-                ],
-            ],
-            [
                 'attribute' => 'customer',
                 'filter' => $users,
                 'format' => 'raw',
