@@ -102,14 +102,14 @@ class Task extends \yii\db\ActiveRecord
         parent::afterSave($insert, $changedAttributes);
             $tgm = new Tgram();
             if ($insert) {
-               $text = 'Здравствуйте, у вас есть новая задача:' ;
+               $text = 'Здравствуйте, у вас есть новая задача:'."\n".$this::STATUS[$this->status]  ;
             }else{
-               $text = 'Здравствуйте, у вас обновлена задача:' ;
+               $text = 'Здравствуйте, у вас обновлена задача:'."\n".$this::STATUS[$this->status] ;
             }
             $text .= "\n";
             $text .= '<a href="' . 'http://redmine.dumz.ru/task/view?id='.$this->id . '">'.$this->name.'</a>';
             $tgm->sendTelegram($text, $this->userArrayTgm[$this->user_id]);
-      
+            
     }
 
 
