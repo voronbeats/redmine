@@ -10,7 +10,7 @@ use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
-
+use yii\helpers\Url;
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -116,7 +116,10 @@ AppAsset::register($this);
   <footer class="footer mt-auto py-3 text-muted">
     <div class="container">
         <ul>
-           <li><a href=""></a></li>
+           <li><a href="<?= Url::to(['grafik/index']); ?>"><i class="fa fa-trash" aria-hidden="true"></i>
+ График дежурств</a></li>
+           <li><a href="<?= Url::to(['progul/index']); ?>"><i class="fa fa-ban" aria-hidden="true"></i>
+ Прогулы</a></li>
         </ul>
     </div>
   </footer>

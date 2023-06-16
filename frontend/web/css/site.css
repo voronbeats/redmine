@@ -1,6 +1,7 @@
 .padding-20 {
 	padding-left: 20px;
 	padding-right: 20px;
+    margin-bottom: 50px;
 }
 
 .center {
@@ -67,4 +68,14 @@ margin-bottom: 20px;
       .breadcrumb {
         margin-top: 70px;
       }
+}
+
+.footer {
+    background: #6c757d !important;
+
+margin-top: 50px;
+display: table;
+}
+.footer ul li a {
+    color: #fff;
 }
