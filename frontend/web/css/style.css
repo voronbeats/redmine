@@ -20243,11 +20243,12 @@ disabled look for disabled choices in the results dropdown
 }
 
 .zadacha {
-	background: #ffb2f9;
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	background: #6689ff;
+	color: #FFF;
 }
 
 

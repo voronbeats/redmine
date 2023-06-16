@@ -45,27 +45,26 @@ margin-bottom: 20px;
 .add-adaptive {
    display: flex;
 }
-
+.btn {
+    border-radius: inherit;
+}
 @media (max-width: 990px) {
     .add-adaptive {
         display: flex;
         position: fixed;
-        z-index: 999;
-        right: 0;
-        top: 0;
-        right: 0;
+
+
         z-index: 9999;
         top: 10px;
         right: 10px;
-        float: right;
-        text-align: right;
+        left: 150px;
+        right: auto;
     }
 
     .rd-navbar-fixed .rd-navbar-main-element {
         width: 100%;
       }
       .breadcrumb {
-    
         margin-top: 70px;
       }
 }
