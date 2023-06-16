@@ -40,8 +40,7 @@ $this->registerJsFile(
 );
 ?>
 <div class="task-index">
-    <div
-        style="width:100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px;">
+    <div>
         <h1 style="font-weight: 400;">
             <?= Html::encode($this->title) ?>
 
@@ -63,25 +62,27 @@ $this->registerJsFile(
         'columns' => [
             'id',
             [
-                'attribute' => 'name', 'format'=>'raw',
-    
+                'attribute' => 'name',
+                'format' => 'raw',
+
                 'value' =>
                 function ($model) {
-                    return Html::a($model->name, ['task/view', 'id' => $model->id],['target' => '_blank', 'data-pjax' => 0]);
+                    return Html::a($model->name, ['task/view', 'id' => $model->id], ['target' => '_blank', 'data-pjax' => 0]);
 
                 },
             ],
 
             // 'status',
             ['attribute' => 'prioritet', 'filter' => \common\models\Task::PRIORITET, 'value' => @Prioritet],
-            ['attribute'=>'date_add', 
-            'filterInputOptions' => [
-              'class' => 'form-control  datepicker index',
-              'id' => false,
-              'autocomplete' => 'off',
+            [
+                'attribute' => 'date_add',
+                'filterInputOptions' => [
+                    'class' => 'form-control  datepicker index',
+                    'id' => false,
+                    'autocomplete' => 'off',
 
-          ],
-          ],
+                ],
+            ],
             //'date_end',
             ['attribute' => 'status', 'filter' => \common\models\Task::STATUS, 'value' => @Status],
             [

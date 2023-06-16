@@ -3,6 +3,7 @@
 /** @var \yii\web\View $this */
 /** @var string $content */
 
+use frontend\widget\Notification\Notif;
 use common\widgets\Alert;
 use frontend\assets\AppAsset;
 use yii\bootstrap4\Breadcrumbs;
@@ -42,14 +43,7 @@ AppAsset::register($this);
                   <div class="rd-navbar-main-element">
                     <div class="rd-navbar-nav-wrap">
                       <!-- RD Navbar Share-->
-                      <div class="rd-navbar-share fl-bigmug-line-share27" data-rd-navbar-toggle=".rd-navbar-share-list">
-                        <ul class="list-inline rd-navbar-share-list">
-                          <li class="rd-navbar-share-list-item"><a class="icon fa fa-facebook" href="#"></a></li>
-                          <li class="rd-navbar-share-list-item"><a class="icon fa fa-twitter" href="#"></a></li>
-                          <li class="rd-navbar-share-list-item"><a class="icon fa fa-google-plus" href="#"></a></li>
-                          <li class="rd-navbar-share-list-item"><a class="icon fa fa-instagram" href="#"></a></li>
-                        </ul>
-                      </div>
+                  
                       <ul class="rd-navbar-nav">
                         <li class="rd-nav-item"><i class="fa fa-home" aria-hidden="true"></i> <a class="rd-nav-link" href="/">Домой</a></li>
                         <li class="rd-nav-item"><i class="fa fa-bar-chart" aria-hidden="true"></i> <a class="rd-nav-link" href="/labor-costs/statics">Статистика</a></li>
@@ -60,7 +54,11 @@ AppAsset::register($this);
                        <? } ?>
                        
                         <li class="rd-nav-item"><i class="fa fa-pencil" aria-hidden="true"></i> <a class="rd-nav-link" href="/task/create">Создание задачи</a></li>
+
+                        <li class="rd-nav-item"><i class="fa fa-book" aria-hidden="true"></i> <a class="rd-nav-link" href="/labor-costs">Создание трудозатрат</a></li>
+                        
                         <li class="rd-nav-item"><i class="fa fa-book" aria-hidden="true"></i> <a class="rd-nav-link" href="/labor-costs">Трудозатраты</a></li>
+
                         <li class="rd-nav-item">
                         <? if (!Yii::$app->user->isGuest) { ?>
                           <i class="fa fa-share"></i>  <a><?= Html::a(
@@ -72,15 +70,19 @@ AppAsset::register($this);
                             <a class="rd-nav-link" href="/site/login">Войти</a>         
                             <?}?>
                         </li>
+                        <li class="rd-nav-item">
+                       
+                           <?=Notif::widget()?>
+
+                        </li>
                       </ul>
                     </div>
                   </div>
                 </div>
-              </div>
-            </nav>
-          </div>
+              </div>       
+            </nav>      
+          </div>    
         </header>
-
 <main role="main" class="flex-shrink-0">
         <?= Breadcrumbs::widget([
             'homeLink' => ['label' => 'Главная', 'url' => '/'],
@@ -88,16 +90,13 @@ AppAsset::register($this);
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
-
 </main>
-
 <footer class="footer mt-auto py-3 text-muted">
     <div class="container">
         <!--<p class="float-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
         <p class="float-right"><?= Yii::powered() ?></p>-->
     </div>
 </footer>
-
 <?php $this->endBody() ?>
 </body>
 </html>
