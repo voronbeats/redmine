@@ -69,13 +69,9 @@ class LaborCostsController extends Controller
      */
     public function actionCreate($id = false)
     {
-        if($id) {
-            $task = Task::findOne($id);
-        }else{
-            $task = false;
-        }
 
-        
+        $task = Task::findOne($id);
+
         $model = new LaborCosts();
 
         if ($this->request->isPost) {

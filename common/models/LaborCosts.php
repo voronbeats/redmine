@@ -65,7 +65,7 @@ class LaborCosts extends \yii\db\ActiveRecord
         ];
     }
     public function getTask()
-    {
+    { 
         return $this->hasOne(Task::className(), ['id' => 'task_id']);
     }
 }
