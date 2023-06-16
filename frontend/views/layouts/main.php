@@ -55,10 +55,7 @@ AppAsset::register($this);
                 <!-- RD Navbar Share-->
 
                 <ul class="rd-navbar-nav">
-
                   <li class="rd-nav-item"><i class="fa fa-home" aria-hidden="true"></i> <a class="rd-nav-link"
-                      href="/">Домой</a></li>
-                  <li class="rd-nav-item"><i class="fa fa-home" aria-hidden="true"></i><a class="rd-nav-link"
                       href="/">Список задач</a></li>
                   <li class="rd-nav-item"><a class="rd-nav-link" href="/labor-costs/statics">Статистика</a></li>
                   <? if (!Yii::$app->user->isGuest) { ?>
@@ -67,11 +64,6 @@ AppAsset::register($this);
                         href="/task/user">Мои задачи</a>
                     </li>
                   <? } ?>
-
-
-
-                  <li class="rd-nav-item"><i class="fa fa-book" aria-hidden="true"></i><a class="rd-nav-link"
-                      href="/labor-costs">Создание трудозатрат</a></li>
                   <li class="rd-nav-item"><a class="btn btn-success success" href="/task/create"><i
                         class="fa fa-pencil " aria-hidden="true"></i> Создание задачи</li></a>
                   <li class="rd-nav-item"><i class="fa fa-book" aria-hidden="true"></i> <a class="rd-nav-link"
