@@ -1,6 +1,7 @@
 <?php
 
 use common\models\LaborCosts;
+use common\models\Task;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -52,10 +53,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     <tr>    
                         <th>Часы</th>
                         <th>Название задачи</th>  
+                        <th>статус задачи</th> 
                     </tr> 
                     
                         <?foreach($res->tasksmonth as $task) {?>
-                            <tr><td><?=$res->countSum($task->laborcost)?></td><td><?=$task->name?></td></tr>  
+                            <tr>
+                               <td><?=$res->countSum($task->laborcost)?></td>
+                               <td><?=$task->name?></td>
+                               <td><?=Task::STATUS[$task->status]?></td>
+                            </tr>  
                         <?}?>
                     
                     </table>
