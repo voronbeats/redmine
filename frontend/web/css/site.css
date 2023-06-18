@@ -79,3 +79,82 @@ display: table;
 .footer ul li a {
     color: #fff;
 }
+
+
+
+
+
+.side,
+.containers {
+  width: 5em;
+  height: 5em;
+  }
+
+.containers {
+    margin-left: 20px;
+  border: 1px dotted white;
+  transform-style: preserve-3d;
+  animation: rotate 10s infinite linear;
+  }
+  .containers:before,
+  .containers:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 5em;
+    height: 5em;
+    border: 1px dotted white;
+    }
+    .containers:before {
+      transform: rotateX(45deg);  
+      }
+    .containers:after {
+      transform: rotatey(45deg);  
+      }
+
+.side {
+  position: absolute;
+  width: 5em;
+  height: 5em;
+  border: 1px solid white;
+  opacity: .7;
+  }
+
+.back {
+  transform: translateZ(-2.5em);
+  background: orange;
+  }
+
+.left {
+  transform: translateX(-2.5em) rotateY(90deg);
+  background: lightgreen;
+  }
+
+.right {
+  transform: translateX(2.5em) rotateY(90deg);
+  background: yellowgreen;
+  }
+.top {
+  transform: translateY(-2.5em) rotateX(90deg);
+  background: skyblue;
+  }
+
+.bottom {
+  transform: translateY(2.5em) rotateX(90deg);
+  background: steelblue;
+  }
+
+.front {
+  transform: translateZ(2.5em);
+  background: gold;
+  }
+
+@keyframes rotate {
+  100% {
+    transform: rotatex(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+
+
+

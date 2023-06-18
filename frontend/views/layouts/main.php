@@ -49,7 +49,18 @@ AppAsset::register($this);
               <!-- RD Navbar Brand-->
               <div class="rd-navbar-brand ">
                   <a class="brand" href="/">
-                    <i class="fa fa-cube" aria-hidden="true"></i>
+                    
+
+<div class="containers">
+    <div class="back side"></div>
+    <div class="left side"></div>
+    <div class="right side"></div>
+    <div class="top side"></div>
+    <div class="bottom side"></div>
+    <div class="front side"></div>
+</div>
+
+
                   </a>
               </div>
               </div>
