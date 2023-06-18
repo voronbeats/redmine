@@ -158,3 +158,83 @@ display: table;
 
 
 
+
+
+
+@media (max-width: 990px) {
+    .side,
+.containers {
+  width: 4em;
+  height: 4em;
+  }
+    .containers {
+        margin-left: 0px;
+      border: 1px dotted white;
+      transform-style: preserve-3d;
+      animation: rotate 10s infinite linear;
+      }
+      .containers:before,
+      .containers:after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 2.5em;
+        height: 2.5em;
+        border: 1px dotted white;
+        }
+        .containers:before {
+          transform: rotateX(45deg);  
+          }
+        .containers:after {
+          transform: rotatey(45deg);  
+          }
+    
+    .side {
+      position: absolute;
+      width: 2.5em;
+      height: 2.5em;
+      border: 1px solid white;
+      opacity: .7;
+      }
+    
+    .back {
+      transform: translateZ(-1.25em);
+      background: orange;
+      }
+    
+    .left {
+      transform: translateX(-1.25em) rotateY(90deg);
+      background: lightgreen;
+      }
+    
+    .right {
+      transform: translateX(1.25em) rotateY(90deg);
+      background: yellowgreen;
+      }
+    .top {
+      transform: translateY(-1.25em) rotateX(90deg);
+      background: skyblue;
+      }
+    
+    .bottom {
+      transform: translateY(1.25em) rotateX(90deg);
+      background: steelblue;
+      }
+    
+    .front {
+      transform: translateZ(1.25em);
+      background: gold;
+      }
+
+      .rd-navbar-fixed .rd-navbar-brand {
+        margin-left: 0px;
+    }
+    .rd-navbar-fixed .rd-navbar-brand {
+    
+        overflow: inherit;
+    }
+}
+
+
+
+
