@@ -27,7 +27,7 @@ class GrafikController extends Controller
             $this->days[date( 'N',  strtotime('+2 day'))] => date("Y-m-d",  strtotime('+2 day')),
             $this->days[date( 'N',  strtotime('+3 day'))] => date("Y-m-d",  strtotime('+3 day')),
             $this->days[date( 'N',  strtotime('+4 day'))] => date("Y-m-d",  strtotime('+4 day')),
-            $this->days[date( 'N',  strtotime('+5 day'))] => date("Y-m-d",  strtotime('+5 day')),
+
          );
 
 

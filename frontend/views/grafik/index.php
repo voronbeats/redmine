@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?foreach($dayArray as $key => $day) {?>
             <td>
             <? if($key == 'Сб' || $key == 'Вс') {?>
-                  <span style="color: red;">выходной</span>
+                  <span style="color: red;">вых</span>
             <? }else{?>
        
                     <? if($user->usergrafik($user->id, $day)) {?>
