@@ -86,8 +86,8 @@ display: table;
 
 .side,
 .containers {
-  width: 5em;
-  height: 5em;
+  width: 4em;
+  height: 4em;
   }
 
 .containers {
@@ -101,51 +101,51 @@ display: table;
     content: "";
     display: block;
     position: absolute;
-    width: 5em;
-    height: 5em;
+    width: 4em;
+    height: 4em;
     border: 1px dotted white;
     }
     .containers:before {
-      transform: rotateX(45deg);  
+      transform: rotateX(35deg);  
       }
     .containers:after {
-      transform: rotatey(45deg);  
+      transform: rotatey(35deg);  
       }
 
 .side {
   position: absolute;
-  width: 5em;
-  height: 5em;
+  width: 4em;
+  height: 4em;
   border: 1px solid white;
   opacity: .7;
   }
 
 .back {
-  transform: translateZ(-2.5em);
+  transform: translateZ(-2em);
   background: orange;
   }
 
 .left {
-  transform: translateX(-2.5em) rotateY(90deg);
+  transform: translateX(-2em) rotateY(90deg);
   background: lightgreen;
   }
 
 .right {
-  transform: translateX(2.5em) rotateY(90deg);
+  transform: translateX(2em) rotateY(90deg);
   background: yellowgreen;
   }
 .top {
-  transform: translateY(-2.5em) rotateX(90deg);
+  transform: translateY(-2em) rotateX(90deg);
   background: skyblue;
   }
 
 .bottom {
-  transform: translateY(2.5em) rotateX(90deg);
+  transform: translateY(2em) rotateX(90deg);
   background: steelblue;
   }
 
 .front {
-  transform: translateZ(2.5em);
+  transform: translateZ(2em);
   background: gold;
   }
 
