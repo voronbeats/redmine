@@ -13,6 +13,7 @@ use yii\widgets\Pjax;
 
 $this->title = 'Трудозатраты';
 $this->params['breadcrumbs'][] = $this->title;
+
  
 ?>
 <div class="labor-costs-index">
@@ -33,20 +34,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             // ['class' => 'yii\grid\SerialColumn'],
-
             // 'id',
             'user_id',
             'date',
             'comment:ntext',
             'time',
             'task_id',
-
-            
+            'task_name',      
             [
                 'class' => ActionColumn::className(),
                 'template' => '{view} {update} {delete}',
                 // 'buttons' => '',
-    
             ],
         ],
     ]); ?>

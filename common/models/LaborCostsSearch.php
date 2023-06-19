@@ -19,7 +19,7 @@ class LaborCostsSearch extends LaborCosts
     {
         return [
             [['id', 'user_id', 'task_id'], 'integer'],
-            [['date', 'comment', 'time'], 'safe'],
+            [['date', 'comment', 'time', 'task_name'], 'safe'],
         ];
     }
 
@@ -59,13 +59,13 @@ class LaborCostsSearch extends LaborCosts
             // $query->where('0=1');
             return $dataProvider;
         }
-        $query->andFilterWhere(['user_id' => Yii::$app->user->id]); 
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
             'date' => $this->date,
             'task_id' => $this->task_id,
+            'task_name' => $this->task_name,
         ]);
 
         $query->andFilterWhere(['like', 'comment', $this->comment])

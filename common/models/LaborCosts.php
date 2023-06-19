@@ -14,6 +14,7 @@ use common\models\Task;
  * @property string|null $comment
  * @property string $time
  * @property int $task_id
+ * @property string|null $task_name
  */
 class LaborCosts extends \yii\db\ActiveRecord
 {
@@ -34,17 +35,18 @@ class LaborCosts extends \yii\db\ActiveRecord
             [['date', 'time', 'task_id'], 'required'],
             [['user_id', 'task_id', 'time'], 'integer'],
             [['date'], 'safe'],
-            [['comment'], 'string'],
+            [['comment', 'task_name'], 'string'],
         ];
     }
   
 
     public function beforeSave($insert) {
         if (parent::beforeSave($insert)) {
+            $this->task_name = $this->task->name;
             $this->user_id = Yii::$app->user->id;
             if ($insert) {
                 $this->user_id = Yii::$app->user->id;
-            }
+            } 
             return true;
         }
         return false;
@@ -62,6 +64,7 @@ class LaborCosts extends \yii\db\ActiveRecord
             'comment' => 'Описание',
             'time' => 'Часы (Количество)',
             'task_id' => 'ID Задачи',
+            'task_name' => 'Название задачи'
         ];
     }
     public function getTask()
