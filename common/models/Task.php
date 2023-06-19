@@ -91,6 +91,8 @@ class Task extends \yii\db\ActiveRecord
             }
             if (!$this->text) {
                 $this->text = $this->name;
+            }else{
+                $this->name = mb_strimwidth($this->name, 0, 40 , "...");
             }
             return true;
 
