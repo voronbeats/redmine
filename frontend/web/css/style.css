@@ -20264,7 +20264,7 @@ disabled look for disabled choices in the results dropdown
 
 .test2 , .test3 {
 	margin-left: 10px;
-
+}
 
 
 .fa {
@@ -20304,4 +20304,12 @@ disabled look for disabled choices in the results dropdown
 
 .summary {
 	margin: 20px;
+}
+
+.child-add {
+	margin-bottom: 40px;
+}
+
+.child-name:last-child {
+	margin-bottom: 40px;
 }
