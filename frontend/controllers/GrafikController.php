@@ -20,13 +20,14 @@ class GrafikController extends Controller
     {
         $users = $this->findUsers();
         $dayArray = array(
+            $this->days[date( 'N',  strtotime('-3 day'))] => date("Y-m-d",  strtotime('-3 day')),
             $this->days[date( 'N',  strtotime('-2 day'))] => date("Y-m-d",  strtotime('-2 day')),
             $this->days[date( 'N',  strtotime('-1 day'))] => date("Y-m-d",  strtotime('-1 day')),
             $this->days[date( 'N' )] => date("Y-m-d"),
             $this->days[date( 'N',  strtotime('+1 day'))] => date("Y-m-d",  strtotime('+1 day')),
             $this->days[date( 'N',  strtotime('+2 day'))] => date("Y-m-d",  strtotime('+2 day')),
             $this->days[date( 'N',  strtotime('+3 day'))] => date("Y-m-d",  strtotime('+3 day')),
-            $this->days[date( 'N',  strtotime('+4 day'))] => date("Y-m-d",  strtotime('+4 day')),
+          //  $this->days[date( 'N',  strtotime('+4 day'))] => date("Y-m-d",  strtotime('+4 day')),
 
          );
 
