@@ -71,6 +71,7 @@ class Comments extends \yii\db\ActiveRecord
     }
 
     public function afterSave($insert, $changedAttributes) {
+        if(Yii::$app->user->identity->id != $this->user_id) {
         $tgm = new Tgram();
         $text = 'Появился комментарий у задачи: <a href="' . 'http://redmine.dumz.ru/task/view?id='.$this->task_id . '">'.$this->task->name.'</a>';
         $notif = new Notification();
@@ -79,7 +80,9 @@ class Comments extends \yii\db\ActiveRecord
             $notif->user_id = $this->task->author_id;      
             $notif->flag = '0';
             $notif->save();
-        $tgm->sendTelegram($text, $this->userArrayTgm[$this->task->user_id]);
+           
+                $tgm->sendTelegram($text, $this->userArrayTgm[$this->task->user_id]);
+            }
     }
 
     public function getTask() {
