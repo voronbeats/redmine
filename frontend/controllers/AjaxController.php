@@ -7,6 +7,7 @@ use yii\helpers\Url;
 use yii\web\Response;
 use yii\web\UploadedFile;
 use yii\base\DynamicModel;
+use common\models\Task;
 
 class AjaxController extends Controller
 {
@@ -64,5 +65,11 @@ class AjaxController extends Controller
         @unlink($dir);
 		return 'Изображение удалено с сервера';	
 	}
+
+    public function actionChild($task, $child) {
+        $model = Task::findOne($child);
+        $model->parent_id = $task;
+        $model->update();
+    }
 	
 }
