@@ -20295,7 +20295,7 @@ disabled look for disabled choices in the results dropdown
 }
 
 .notif-button {
-	background-color: rgba(0,0,0,0.2);
+	/*background-color: rgba(0,0,0,0.2);*/
 	display: flex;
 	flex-direction: column;
 	border-radius: 50%;
@@ -20309,7 +20309,9 @@ disabled look for disabled choices in the results dropdown
 .child-add {
 	margin-bottom: 40px;
 }
-
+.red {
+	color: red;
+}
 .child-name:last-child {
 	margin-bottom: 40px;
 }
