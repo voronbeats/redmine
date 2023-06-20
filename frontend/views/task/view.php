@@ -82,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <? if ($model->parent) { ?>
         <ul>
             <? foreach ($model->parent as $res) { ?>
-                <li class="child-name"><a href="<?= Url::to(['task/view', 'id' => $res->id]); ?>">#<?=$res->id?> - <?= $res->name ?></a></li>
+                <li class="child-name"><a href="<?= Url::to(['task/view', 'id' => $res->id]); ?>" data-pjax = 0 target="_blank">#<?=$res->id?> - <?= $res->name ?></a></li>
             <? } ?>
         </ul>
     <? } ?>
