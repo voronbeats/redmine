@@ -71,17 +71,15 @@ class Comments extends \yii\db\ActiveRecord
     }
 
     public function afterSave($insert, $changedAttributes) {
-        $commentUserId = $this->user_id;
 
-        $authorId = $this->task->user_id;
-        $ispoln = $this->task->author_id;
+        $ispoln = $this->task->user_id;     
+        $authorId = $this->task->author_id;
 
-        if(Yii::$app->user->identity->id != $ispoln) {
+        if(Yii::$app->user->identity->id == $ispoln) {
             $recipient = $authorId;
         }else{
             $recipient = $ispoln;
         }
-
             $tgm = new Tgram();
             $text = 'Появился комментарий у задачи: <a href="' . 'http://redmine.dumz.ru/task/view?id='.$this->task_id . '">'.$this->task->name.'</a>';
             $notif = new Notification();
