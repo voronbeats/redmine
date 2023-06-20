@@ -26,7 +26,7 @@ $this->registerJsFile(
 <div class="labor-costs-form container">
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name_full')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->dropDownList(\common\models\Task::STATUS) ?>
 
