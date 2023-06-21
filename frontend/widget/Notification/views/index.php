@@ -31,10 +31,11 @@ use yii\helpers\Url;
   <? } else { ?>
 
 <p>Нет сообщений</p>
-      <a data-pjax="0" href="<?= Url::to(['notification/index']); ?>">Мои уведомления</a>
+
 
 
   <? } ?>
+  <a data-pjax="0" href="<?= Url::to(['notification/index']); ?>">Мои уведомления</a>
   <?php Pjax::end(); ?>
   </div>
   </div>
