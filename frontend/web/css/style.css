@@ -20319,6 +20319,7 @@ disabled look for disabled choices in the results dropdown
 .user-commnets-to {
 	cursor: pointer;
 	color: blue;
+	font-size: 20px;
 }
 
 .who {
@@ -20328,4 +20329,15 @@ disabled look for disabled choices in the results dropdown
 .close-to {
 	color: red;
 	cursor: pointer;
+}
+
+.com-container {
+	background-color: rgba(128, 128, 128, 0.1);
+	padding: 10px 10px 10px 10px;
+	margin: 10px;
+}
+
+.com-container-our {
+	padding: 10px 10px 10px 10px;
+	margin: 10px;
 }

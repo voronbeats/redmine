@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
         <div class="alert alert-success" role="alert">Комментарий сохранен</div>
     <? } else { ?>
         <?php $form = ActiveForm::begin(['options' => ['data-pjax' => true]]); ?>
-        <span class="who"></span>   
+        <span class="who"></span>
         <?= $form->field($model, 'text')->widget(Widget::className(), [
             'settings' => [
                 'lang' => 'ru',
@@ -43,7 +43,7 @@ use yii\widgets\ActiveForm;
             ],
         ])->label('') ?>
 
-        <?= $form->field($model, 'to')->hiddenInput(['value' => $modelTask->user_id])->label(false)?>
+        <?= $form->field($model, 'to')->hiddenInput(['value' => $modelTask->user_id])->label(false) ?>
 
         <?= $form->field($model, 'task_id')->hiddenInput(['value' => $modelTask->id])->label(false) ?>
         <div class="form-group">
@@ -53,11 +53,22 @@ use yii\widgets\ActiveForm;
         <?php ActiveForm::end(); ?>
     <? } ?>
 </div>
-<? if ($comments) { ?>
-    <? foreach ($comments as $com) { ?>
-        <span class="user-commnets-to" data-id="<?=$com->user->id?>"><?=$com->user->username?></span>
-        <?= $com->text ?><br>
+
+    <? if ($comments) { ?>
+        <? foreach ($comments as $com) { ?>
+            <? if($com->user->id == Yii::$app->user->identity->id) {?>
+                <div class="com-container">
+                    <span class="user-commnets-to" data-id="<?= $com->user->id ?>"><?= $com->user->username ?>:</span>
+                    <span> <?= $com->text ?> </span>
+                </div>
+            <?}else{?>
+                <div class="com-container-our">
+                    <span class="user-commnets-to" data-id="<?= $com->user->id ?>"><?= $com->user->username ?>:</span>
+                    <span> <?= $com->text ?> </span>
+                </div>
+            <?}?>
+        <? } ?>
     <? } ?>
-<? } ?>
+
 
 <?php Pjax::end(); ?>
