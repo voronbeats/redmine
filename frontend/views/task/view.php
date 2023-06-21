@@ -89,6 +89,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Pjax::end(); ?>
 
     <h3>Комментарии</h3>
-    <?= Com::widget(['task_id' => $model->id]) ?>
+    <?= Com::widget(['task_id' => $model->id, 'modelTask' => $model]) ?>
 
 </div>

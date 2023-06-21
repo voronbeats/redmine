@@ -20315,3 +20315,17 @@ disabled look for disabled choices in the results dropdown
 .child-name:last-child {
 	margin-bottom: 40px;
 }
+
+.user-commnets-to {
+	cursor: pointer;
+	color: blue;
+}
+
+.who {
+	color: violet;
+}
+
+.close-to {
+	color: red;
+	cursor: pointer;
+}

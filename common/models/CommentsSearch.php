@@ -17,7 +17,7 @@ class CommentsSearch extends Comments
     public function rules()
     {
         return [
-            [['id', 'user_id', 'task_id'], 'integer'],
+            [['id', 'user_id', 'task_id', 'to'], 'integer'],
             [['text', 'date_add'], 'safe'],
         ];
     }
@@ -62,6 +62,7 @@ class CommentsSearch extends Comments
             'user_id' => $this->user_id,
             'date_add' => $this->date_add,
             'task_id' => $this->task_id,
+            'to' => $this->to
         ]);
 
         $query->andFilterWhere(['like', 'text', $this->text]);

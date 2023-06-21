@@ -39,10 +39,11 @@ class Comments extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['text'], 'required'],
-            [['user_id', 'task_id'], 'integer'],
+            [['text', 'to'], 'required'],
+            [['user_id', 'task_id', 'to'], 'integer'],
             [['text'], 'string'],
             [['date_add'], 'safe'],
+            ['to', 'validateTo']
         ];
     }
 
@@ -56,6 +57,13 @@ class Comments extends \yii\db\ActiveRecord
         }
         return false;
     }
+
+    public function validateTo($attribute, $params, $validator)
+    {
+       if(!User::findOne($this->$attribute)) {
+            $this->addError('to', 'Нет такого юзера');
+       }
+	}
     /**
      * {@inheritdoc}
      */
@@ -67,34 +75,29 @@ class Comments extends \yii\db\ActiveRecord
             'text' => 'Text',
             'date_add' => 'Date Add',
             'task_id' => 'Task ID',
+            'to' => 'To'
         ];
     }
 
     public function afterSave($insert, $changedAttributes) {
-        $commentUserId = $this->user_id;
-
-        $authorId = $this->task->user_id;
-        $ispoln = $this->task->author_id;
-
-        if(Yii::$app->user->identity->id != $ispoln) {
-            $recipient = $authorId;
-        }else{
-            $recipient = $ispoln;
-        }
 
             $tgm = new Tgram();
             $text = 'Появился комментарий у задачи: <a href="' . 'http://redmine.dumz.ru/task/view?id='.$this->task_id . '">'.$this->task->name.'</a>';
             $notif = new Notification();
             $notif->text = $text;
             $notif->date_add = date('Y-m-d h:i:s');
-            $notif->user_id =  $recipient;      
+            $notif->user_id =  $this->to;      
             $notif->flag = '0';
             $notif->save();
-            $tgm->sendTelegram($text, $this->userArrayTgm[$recipient]);
+            $tgm->sendTelegram($text, $this->userArrayTgm[$this->to]);
            
     }
 
     public function getTask() {
         return $this->hasOne(Task::className(),['id'=>'task_id']);
+    }
+
+    public function getUser() {
+        return $this->hasOne(User::className(),['id'=>'user_id']);
     }
 }
