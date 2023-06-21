@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-           <?= Html::a('Трудозатраты', ['labor-costs/create', 'id' => $model->id], ['class' => 'btn btn-success test test3']) ?>
+            <?= Html::a('Трудозатраты', ['labor-costs/create', 'id' => $model->id], ['class' => 'btn btn-success test test3']) ?>
         <? } ?>
     </p>
             
@@ -39,24 +39,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',      
-            'date_add',
-            'date_end',
-            'text:raw',
-            'ocenka_truda',
-            'Prioritet',
-            'Status',
-
             ['attribute'=>'author','format'=>'raw','value'=> 
-               function($data) {
+                function($data) {
                     return $data['author']['username'];
-              },
-           ],  
+            },
+            ], 
             ['attribute'=>'customer','format'=>'raw','value'=> 
                 function($data) {
-                      return $data['customer']['username'];
+                    return $data['customer']['username'];
                 },
             ],
+            'name', 
+            'text:raw',  
+            'Status',   
+            'Prioritet',
+            'date_add',
+            'date_end',
+            'ocenka_truda',
             'readliness',
         ],
     ]) ?>
