@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'text:ntext',
             'date_add',
             'task_id',
+            'to',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Comments $model, $key, $index, $column) {

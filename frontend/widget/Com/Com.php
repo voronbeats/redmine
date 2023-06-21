@@ -12,6 +12,7 @@ use common\models\Comments;
 class Com extends Widget
 {
     public $task_id;
+    public $modelTask;
     function run () {
 
         $commentsAll = $this->findComments();
@@ -29,7 +30,8 @@ class Com extends Widget
         return $this->render('index', [
             'model' => $model,
             'save' => $save,
-            'comments' => $commentsAll
+            'comments' => $commentsAll,
+            'modelTask' => $this->modelTask
             
         ]);
         
