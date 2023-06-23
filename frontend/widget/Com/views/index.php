@@ -58,7 +58,7 @@ use yii\widgets\ActiveForm;
         <? foreach ($comments as $com) { ?>
             <? if($com->user->id == Yii::$app->user->identity->id) {?>
                 <div class="com-container">
-                    <span class="user-commnets-to" data-id="<?= $com->user->id ?>"><?= $com->user->username ?>:</span>
+                    <span class="user-commnets-to" data-id="<?= $com->user->id ?>"><?if($com->user->id){?>Вы:<?}?></span>
                     <span> <?= $com->text ?> </span>
                 </div>
             <?}else{?>
