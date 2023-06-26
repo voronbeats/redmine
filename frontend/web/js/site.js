@@ -4,12 +4,18 @@ $(document).ready(function () {
 	pjaxNotificationReload();
 	pjaxClick();
 	To();
+	clickChat();
+	tops();
+	clickClient();
 
 	$(document).on('pjax:success', function (selector, xhr, status, selector, container) {
 		if (container.container == '#pjax-click') {
 			updateNotif();
 		}
 		calendar();
+		clickChat();
+		tops();
+		clickClient();
 		if (container.container == '#pjaxchild') {
 			To();
 		}
@@ -93,9 +99,9 @@ function To() {
 		var id = $(this).attr('data-id');
 		var redactor = $('.redactor-editor');
 		$('#comments-to').val(id);
-		$('.who').html('<span class="to-user">Ответить:'+ $(this).text()+'</span>'+'<br>'+'<span class="close-to">  	X</span>');
+		$('.who').html('<span class="to-user">Ответить:' + $(this).text() + '</span>' + '<br>' + '<span class="close-to">  	X</span>');
 
-		$('.close-to').on("click", function() {
+		$('.close-to').on("click", function () {
 			$('#comments-to').val(user);
 			$('.who').html('');
 		});
@@ -103,3 +109,34 @@ function To() {
 
 
 }
+
+
+function clickChat() {
+	$('.answer').on("click", function () {
+		var chat_id = $(this).attr("data-id");
+		$('#chat-to').val(chat_id);
+		$('.username').text('Ответить:' + $(this).prev().text());
+		//var parent =  $('.text-respawn').html($(this).parent().next().html());
+		var parent_id_text = $(this).attr("data-id-text");
+		$('#chat-parent').val(parent_id_text);
+		$('#chat-text').focus();
+	});
+}
+
+function clickClient() {
+	$(".client").on("click", function () {
+		var chat_id = $(this).attr("data-client");
+		$('#chat-to').val(chat_id);
+		$('.username').text('Написать:' + $(this).text());
+		//var parent =  $('.text-respawn').html($(this).parent().next().html());
+		var parent_id_text = $(this).attr("data-id-text");
+		$('#chat-parent').val(parent_id_text);
+		$('#chat-text').focus();
+	});
+}
+
+function tops() {
+
+	var block = document.querySelector(".lc");
+	block.scrollTop = 99999;
+}	
