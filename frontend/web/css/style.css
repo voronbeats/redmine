@@ -20341,3 +20341,8 @@ disabled look for disabled choices in the results dropdown
 	padding: 10px 10px 10px 10px;
 	margin: 10px;
 }
+
+.redact {
+	cursor: pointer;
+	color: red;
+}

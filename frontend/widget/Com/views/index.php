@@ -2,6 +2,7 @@
 use vova07\imperavi\Widget;
 use yii\widgets\Pjax;
 use yii\helpers\Html;
+use frontend\widget\Com\Com;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
@@ -54,21 +55,26 @@ use yii\widgets\ActiveForm;
     <? } ?>
 </div>
 
-    <? if ($comments) { ?>
-        <? foreach ($comments as $com) { ?>
-            <? if($com->user->id == Yii::$app->user->identity->id) {?>
-                <div class="com-container">
-                    <span class="user-commnets-to" data-id="<?= $com->user->id ?>"><?if($com->user->id){?>Вы:<?}?></span>
-                    <span> <?= $com->text ?> </span>
-                </div>
-            <?}else{?>
-                <div class="com-container-our">
-                    <span class="user-commnets-to" data-id="<?= $com->user->id ?>"><?= $com->user->username ?>:</span>
-                    <span> <?= $com->text ?> </span>
-                </div>
-            <?}?>
+<? if ($comments) { ?>
+    <? foreach ($comments as $com) { ?>
+        <? if ($com->user->id == Yii::$app->user->identity->id) { ?>
+            <div class="com-container">
+                <span class="user-commnets-to" data-id="<?= $com->user->id ?>"><? if ($com->user->id) { ?>Вы:<? } ?></span> 
+                <i class="fa fa-pencil redact" aria-hidden="true"></i>
+                <span>
+                    <?= $com->text ?>
+                </span>
+            </div>
+        <? } else { ?>
+            <div class="com-container-our">
+                <span class="user-commnets-to" data-id="<?= $com->user->id ?>"><?= $com->user->username ?>:</span>
+                <span>
+                    <?= $com->text ?>
+                </span>
+            </div>
         <? } ?>
     <? } ?>
+<? } ?>
 
 
 <?php Pjax::end(); ?>
