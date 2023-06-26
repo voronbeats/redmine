@@ -7,7 +7,8 @@ use yii\widgets\Pjax;
 /** @var yii\web\View $this */
 /** @var common\models\Chat $model */
 /** @var yii\widgets\ActiveForm $form */
-$this->registerJsFile('/js/site.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('/js/chat.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerCssFile('/css/chat.css', ['depends' => ['frontend\assets\AppAsset']]);
 ?>
 
 <?php Pjax::begin(); ?>
