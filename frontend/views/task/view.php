@@ -8,6 +8,7 @@ use common\models\Task;
 use frontend\widget\Com\Com;
 use frontend\widget\Autocomplete;
 use yii\widgets\Pjax;
+use frontend\widget\UpdateCom\update;
 
 /** @var yii\web\View $this */
 /** @var common\models\Task $model */

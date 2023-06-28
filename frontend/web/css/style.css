@@ -20316,7 +20316,7 @@ disabled look for disabled choices in the results dropdown
 	margin-bottom: 40px;
 }
 
-.user-commnets-to {
+.user-comment-to {
 	cursor: pointer;
 	color: blue;
 	font-size: 20px;
@@ -20340,4 +20340,13 @@ disabled look for disabled choices in the results dropdown
 .com-container-our {
 	padding: 10px 10px 10px 10px;
 	margin: 10px;
+}
+
+.redact {
+	cursor: pointer;
+	color: red;
+}
+
+#datecom {
+	font-size: 10px;
 }

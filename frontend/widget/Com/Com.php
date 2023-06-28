@@ -40,7 +40,8 @@ class Com extends Widget
     
 
     function findComments() {
-        if ($comments = Comments::find()->where(['task_id' => $this->task_id])->orderBy(['id' => SORT_DESC])->All()) {
+
+        if ($comments = Comments::find()->where(['task_id' => $this->task_id])->orderBy(['id' => SORT_DESC])->with(['user'])->All()) {
             return $comments;
         }
         return '';
