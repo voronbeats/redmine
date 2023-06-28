@@ -1,5 +1,6 @@
 <?php
 namespace frontend\controllers;
+use Egulias\EmailValidator\Warning\Comment;
 use Yii;
 use yii\web\Controller;
 use yii\web\BadRequestHttpException;
@@ -8,6 +9,7 @@ use yii\web\Response;
 use yii\web\UploadedFile;
 use yii\base\DynamicModel;
 use common\models\Task;
+use common\models\Comments;
 
 class AjaxController extends Controller
 {
@@ -65,6 +67,16 @@ class AjaxController extends Controller
         @unlink($dir);
 		return 'Изображение удалено с сервера';	
 	}
+
+    public function actionResend($text, $comment_id, $user_id) {
+  
+        if($model = Comments::find()->where(['id' => $comment_id])->andWhere(['user_id' => $user_id])->One()) {
+            $model->text = $text;
+            $model->update();
+            return $text;
+        }
+
+    }
 
     public function actionChild($task, $child) {
         $model = Task::findOne($child);

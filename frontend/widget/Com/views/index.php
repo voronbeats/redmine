@@ -3,6 +3,7 @@ use vova07\imperavi\Widget;
 use yii\widgets\Pjax;
 use yii\helpers\Html;
 use frontend\widget\Com\Com;
+use frontend\widget\UpdateCom\Update;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
@@ -59,15 +60,24 @@ use yii\widgets\ActiveForm;
     <? foreach ($comments as $com) { ?>
         <? if ($com->user->id == Yii::$app->user->identity->id) { ?>
             <div class="com-container">
-                <span class="user-commnets-to" data-id="<?= $com->user->id ?>"><? if ($com->user->id) { ?>Вы:<? } ?></span> 
-                <i class="fa fa-pencil redact" aria-hidden="true"></i>
-                <span>
-                    <?= $com->text ?>
-                </span>
+                <span class="user-comment-to" data-userId="<?= $com->user->id ?>" data-id="<?= $com->id ?>"><? if ($com->user->id) { ?>Вы:<? } ?></span>
+                <? if ($com->next($com->task_id, $com->id)) { ?>
+                    <i class="fa fa-pencil redact" aria-hidden="true"></i>
+                <? } ?>
+                <br>
+                <span id="comId-<?= $com->id ?>"><?= $com->text ?></span>
+                <? if ($com->date_update) { ?>
+                    <? $date_c = strtotime($com->date_update);?>
+                    <span id="datecom"><?=date('H:i', $date_c)?></span>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                <? } else { ?>
+                    <? $date_c = strtotime($com->date_add);?>
+                    <span id="datecom"><?=date('H:i', $date_c)?></span>
+                <? } ?>
             </div>
         <? } else { ?>
             <div class="com-container-our">
-                <span class="user-commnets-to" data-id="<?= $com->user->id ?>"><?= $com->user->username ?>:</span>
+                <span class="user-comment-to" data-userId="<?= $com->user->id ?>" data-id="<?= $com->user->id ?>"><?= $com->user->username ?>:</span>
                 <span>
                     <?= $com->text ?>
                 </span>
