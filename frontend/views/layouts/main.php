@@ -131,6 +131,8 @@ AppAsset::register($this);
  График дежурств</a></li>
            <li><a href="<?= Url::to(['progul/index']); ?>"><i class="fa fa-ban" aria-hidden="true"></i>
  Прогулы</a></li>
+ <li class="rd-nav-item"> <a class="rd-nav-link" href="/task/grade"><i class="fa fa-yelp" aria-hidden="true"></i> График успеваемости</a>
+                  </li>
         </ul>
     </div>
   </footer>
