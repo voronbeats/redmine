@@ -35,7 +35,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             // ['class' => 'yii\grid\SerialColumn'],
             // 'id',
-            'user_id',
+            [
+                'attribute' => 'user_id',
+                'filter' => $users,
+                'format' => 'raw',
+                'value' =>
+                function ($data) {
+                    return '<span class="author_email">' . $data['user']['username'] . '</span>';
+                },
+                'filterInputOptions' => [
+                    'class' => 'form-control author_input',
+                    'id' => null,
+                ],
+            ],
             'date',
             'comment:ntext',
             'time',
