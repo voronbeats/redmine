@@ -39,13 +39,14 @@ class LaborCostsController extends Controller
      */
     public function actionIndex()
     {
-        
+        $users = $this->findUser();
         $searchModel = new LaborCostsSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'users' => $users
         ]);
     }
 
