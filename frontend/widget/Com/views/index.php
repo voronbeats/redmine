@@ -68,11 +68,11 @@ use yii\widgets\ActiveForm;
                 <span id="comId-<?= $com->id ?>"><?= $com->text ?></span>
                 <? if ($com->date_update) { ?>
                     <? $date_c = strtotime($com->date_update);?>
-                    <span id="datecom"><?=date('H:i', $date_c)?></span>
+                    <span id="datecom"><?=date('Y-m-d H:i', $date_c)?></span>
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 <? } else { ?>
                     <? $date_c = strtotime($com->date_add);?>
-                    <span id="datecom"><?=date('H:i', $date_c)?></span>
+                    <span id="datecom"><?=date('Y-m-d H:i', $date_c)?></span>
                 <? } ?>
             </div>
         <? } else { ?>
