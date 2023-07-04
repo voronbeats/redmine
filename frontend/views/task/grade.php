@@ -65,7 +65,7 @@ echo Highcharts::widget([
 ?>
 
 <select id="select-grade" class="select" onchange="window.location = this.options[this.selectedIndex].value">
-    <option <? if($_GET['date'] == date('Y-m')) { echo 'selected';}?> value="<?= Url::to(['task/grade', 'date' => date('Y-m')]); ?>"><?=date('Y-m')?></option>
+    <option value="<?= Url::to(['task/grade', 'date' => date('Y-m')]); ?>"><?=date('Y-m')?></option>
     <option value="/task/grade?date=<?=date('Y-m', strtotime(date('Y-m'). ' -1 months'))?>"><?=date('Y-m', strtotime(date('Y-m'). ' -1 months'))?></option>
     <option value="/task/grade?date=<?=date('Y-m', strtotime(date('Y-m'). ' -2 months'))?>"><?=date('Y-m', strtotime(date('Y-m'). ' -2 months'))?></option>
     <option value="/task/grade?date=<?=date('Y-m', strtotime(date('Y-m'). ' -3 months'))?>"><?=date('Y-m', strtotime(date('Y-m'). ' -3 months'))?></option>
