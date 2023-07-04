@@ -160,6 +160,15 @@ class TaskController extends Controller
         return $this->redirect(['index']);
     }
 
+
+
+    public function actionGrade() {
+        $users = $this->arraySumUsers();
+        return $this->render('grade', [
+            'users' => $users,
+        ]);
+    }
+
     /**
      * Finds the Task model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -167,6 +176,32 @@ class TaskController extends Controller
      * @return Task the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
+
+
+
+
+    protected function arraySumUsers() {
+        $users = $this->findUser($asArray = false);
+        foreach($users as $user) {
+            $arraySum[] = count($user->taskexit);
+        }
+        $sum = array_sum($arraySum);
+        if($sum == '0') {
+            return ;
+        }
+        $usersResult = '';
+        foreach($users as $user) {
+            $usersResult .= $this->userProcent( $sum, count($user->taskexit), $user->username);
+        }
+
+        return rtrim($usersResult, ",");
+    }
+    protected function userProcent($sum, $count, $username)
+    {
+
+        $result = 100*$count/$sum;
+        return '["'.$username.'", '.$result.'],';
+    }
     protected function findModel($id)
     {
         if (($model = Task::findOne(['id' => $id])) !== null) {
@@ -175,12 +210,19 @@ class TaskController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-    protected function findUser()
+    protected function findUser($asArray = true)
     {
-        if (($model = User::find()->select(['id', 'username'])->asArray()->All())) {
+         $query= User::find();
+        if($asArray) {
+            $query->select(['id', 'username'])->asArray();
+        }else{
+            $model = $query->all();
+            return $model;
+        }
+        $model = $query->All();
+        if ($model) {
             foreach ($model as $res) {
                 $array[$res['id']] = $res['username'];
-
             }
 
             return $array;
@@ -189,5 +231,5 @@ class TaskController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-
+    
 }

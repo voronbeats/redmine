@@ -42,16 +42,19 @@ class Comments extends \yii\db\ActiveRecord
             [['text', 'to'], 'required'],
             [['user_id', 'task_id', 'to'], 'integer'],
             [['text'], 'string'],
-            [['date_add'], 'safe'],
+            [['date_add', 'date_update'], 'safe'],
             ['to', 'validateTo']
         ];
     }
 
     public function beforeSave($insert) {
-        if (parent::beforeSave($insert)) {
+        if (parent::beforeSave($insert)) {  
             $this->user_id = Yii::$app->user->id;
             if ($insert) {
+                $this->date_add = date('Y-m-d H:i:s');
                 $this->user_id = Yii::$app->user->id;
+            }else{
+                $this->date_update = date('Y-m-d H:i:s');
             }
             return true;
         }
@@ -75,7 +78,8 @@ class Comments extends \yii\db\ActiveRecord
             'text' => 'Text',
             'date_add' => 'Date Add',
             'task_id' => 'Task ID',
-            'to' => 'To'
+            'to' => 'To',
+            'date_update' => 'Date Update'
         ];
     }
 
@@ -99,5 +103,12 @@ class Comments extends \yii\db\ActiveRecord
 
     public function getUser() {
         return $this->hasOne(User::className(),['id'=>'user_id']);
+    }
+
+    public function Next($taskId, $commentId) {
+        if($model = Comments::find()->where(['task_id'=>$taskId])->andWhere(['>','id',$commentId])->One()) {
+            return false;
+        }
+        return true;
     }
 }

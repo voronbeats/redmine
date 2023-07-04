@@ -224,7 +224,13 @@ class User extends ActiveRecord implements IdentityInterface
     public function getLcostsmonth() {
         return $this->hasMany(LaborCosts::className(),['user_id'=>'id'])->select('time')->where(['Like', 'date', date('Y-m')])->asArray();
     }
-    
+    public function getTaskexit() {
+        $date = date('Y-m');
+        if(Yii::$app->request->get('date')) {
+            $date = Yii::$app->request->get('date');
+        }
+        return $this->hasMany(Task::className(),['user_id'=>'id'])->select('id')->Where(['Like', 'date_add', $date])->andWhere(['or',['status' => 5], ['status' => 6]]);
+    }
     public function getLcostsmonthprev() {
         return $this->hasMany(LaborCosts::className(),['user_id'=>'id'])->select('time')->where(['Like', 'date', date("Y-m", strtotime("-1 months"))])->asArray();
     }
