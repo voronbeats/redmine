@@ -186,15 +186,19 @@ class TaskController extends Controller
             $arraySum[] = count($user->taskexit);
         }
         $sum = array_sum($arraySum);
+        if($sum == '0') {
+            return ;
+        }
         $usersResult = '';
         foreach($users as $user) {
             $usersResult .= $this->userProcent( $sum, count($user->taskexit), $user->username);
         }
+
         return rtrim($usersResult, ",");
     }
     protected function userProcent($sum, $count, $username)
     {
-    
+
         $result = 100*$count/$sum;
         return '["'.$username.'", '.$result.'],';
     }
