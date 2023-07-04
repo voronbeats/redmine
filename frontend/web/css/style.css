@@ -20342,6 +20342,7 @@ disabled look for disabled choices in the results dropdown
 	margin: 10px;
 }
 
+
 .redact {
 	cursor: pointer;
 	color: red;
@@ -20350,3 +20351,4 @@ disabled look for disabled choices in the results dropdown
 #datecom {
 	font-size: 10px;
 }
+

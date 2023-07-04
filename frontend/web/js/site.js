@@ -5,13 +5,19 @@ $(document).ready(function () {
 	pjaxNotificationReload();
 	pjaxClick();
 	To();
+	clickChat();
+	tops();
+	clickClient();
+	$(document).on('pjax:success', function (selector, xhr, status, selector, container) {
 	resend();
-	$(document).on('pjax:success', function (selector, xhr, status, selector, container) {	
 		if (container.container == '#pjax-click') {
 			updateNotif();
 		}
 		resend();
 		calendar();
+		clickChat();
+		tops();
+		clickClient();
 		if (container.container == '#pjaxchild') {
 			To();
 		}
@@ -95,9 +101,9 @@ function To() {
 		var id = $(this).attr('data-userId');
 		var redactor = $('.redactor-editor');
 		$('#comments-to').val(id);
-		$('.who').html('<span class="to-user">Ответить:'+ $(this).text()+'</span>'+'<br>'+'<span class="close-to">  	X</span>');
+		$('.who').html('<span class="to-user">Ответить:' + $(this).text() + '</span>' + '<br>' + '<span class="close-to">  	X</span>');
 
-		$('.close-to').on("click", function() {
+		$('.close-to').on("click", function () {
 			$('#comments-to').val(user);
 			$('.who').html('');
 		});
@@ -135,3 +141,4 @@ function resend() {
 			});
 });
 }
+

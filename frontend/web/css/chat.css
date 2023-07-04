@@ -1,0 +1,138 @@
+.chat {
+	background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    width: max-content;
+    /* border: 1px solid white; */
+    min-width: 250px;
+    box-shadow: 1px 1px 15px -2px #9d9797;
+    border: 1px solid #ccc;
+	
+	
+}
+
+.users-chat {
+	color: blue;
+}
+/*
+.chat:hover .date-chat {
+	display: contents;
+}
+*/
+
+.enter {	
+    float: right;
+    position: absolute;
+    top: 24px;
+    right: 10px;
+	display: none;
+}
+
+.chat-ds {
+    float: left;
+    width: 100%;
+    position: relative;
+	background-color: rgba(128,128,128,0.2);
+	padding: 0 10px 0 10px;
+	border-radius: 20px 20px 20px 20px;
+}
+
+.to {
+	text-align: right;
+	background-color: #effdde;	
+	float: right;
+}
+
+.chat-gpt {
+	width: auto;
+	background-image: url(/frontend/web/images/fone.png);
+	background-blend-mode: hue;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.7);	
+}
+
+.cont-chat-gpt {
+
+width: 100%;
+margin-top: 20px;
+margin-bottom: 20px;
+display: table;
+
+}
+
+.chat:hover .answer {
+	display:contents;
+}
+
+.answer {
+	display: none;
+	cursor: pointer;
+	color: red;
+}
+
+.answer:hover {
+	color: brown;
+}
+
+.date-chat {
+	width: 100%;
+	text-align: right;
+}
+
+.date {
+	color: blueviolet;
+}
+
+.lc {
+	float: right;
+	overflow: auto;
+	height: 670px;
+}
+
+.to-date {
+	float: left;
+	color: blueviolet;
+}
+
+.lc-to {
+	background-color: #e6f2ed;
+	height: 100%;
+	position: absolute;
+	margin-left: -30px;
+	
+	border-radius: 10px 0 0 10px;
+	overflow: auto;
+}
+
+.lc-text {
+	margin: 20px 0 20px 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.user {
+	display: table;
+    margin: 0px 0 10px 0px;
+}
+
+.user img {
+	border-radius: 50%;
+	margin-right: 5px;
+}
+
+.user span:hover, .user img {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.parent-text {
+	display: flex;
+	flex-direction: column;
+	background-color: #f3f3ed;
+	padding: 10px;
+	border-radius: 5px;
+}
