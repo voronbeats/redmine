@@ -25,6 +25,12 @@ AppAsset::register($this);
     <?= Html::encode($this->title) ?>
   </title>
   <?php $this->head() ?>
+  <!--Для PWA (Приложение)-->
+  <link rel='manifest' href='/manifest.json'>
+  <script src="/pwabuilder-sw.js"></script>
+  <meta name="theme-color" content="#ffffff"/>
+  <link rel="apple-touch-icon" href="/imagelogoPWA/120x120.png"/>
+  <script>if("serviceWorker"in navigator){if(navigator.serviceWorker.controller){console.log("[PWA Builder] active service worker found, no need to register")}else{navigator.serviceWorker.register("/pwabuilder-sw.js",{scope:"./"}).then(function(reg){console.log("[PWA Builder] Service worker has been registered for scope: "+reg.scope)})}} let deferredPrompt=null;window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e}); async function install(){if(deferredPrompt){deferredPrompt.prompt();console.log(deferredPrompt);deferredPrompt.userChoice.then(function(choiceResult){if(choiceResult.outcome==='accepted'){console.log('Your PWA has been installed')}else{console.log('User chose to not install your PWA')}deferredPrompt=null})}}</script>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -103,7 +109,7 @@ AppAsset::register($this);
                       </div>
                       <div class="not-a">
                          <a class="btn btn-success success" href="/task/create">
-                          <i class="fa fa-pencil " aria-hidden="true"></i></a>
+                          <i class="fa fa-pencil " aria-hidden="true" ></i></a>
                       </div>
               </div>
               <? } ?>
@@ -137,6 +143,7 @@ AppAsset::register($this);
     </div>
   </footer>
   <?php $this->endBody() ?>
+  <script src="js/app.js"></script>
 </body>
 
 </html>
