@@ -13,9 +13,17 @@ use yii\widgets\Pjax;
 /** @var common\models\LaborCostsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
+
 $this->title = 'Статистика';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="container">    
+<ul>
+    <li class="uspev"> 
+        <a class="rd-nav-link" href="/task/grade"><i aria-hidden="true"></i><h2>График успеваемости</h2></a>
+    </li>
+</ul>
+</div>
 <div class="labor-costs-index">
 <table class="table table-striped table-bordered">
 
