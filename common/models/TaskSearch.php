@@ -21,7 +21,7 @@ class TaskSearch extends Task
     {
         return [
             [['id', 'status', 'prioritet', 'user_id', 'readliness', 'author', 'author_id', 'customer'], 'integer'],
-            [['name', 'date_add', 'date_end', 'text', 'ocenka_truda'], 'safe'],
+            [['name', 'date_add', 'date_end', 'text', 'ocenka_truda', 'name_full'], 'safe'],
         ];
     }
 
@@ -84,6 +84,7 @@ class TaskSearch extends Task
             'date_end' => $this->date_end,
             'user_id' => $this->user_id,
             'readliness' => $this->readliness,
+            'name_full' => $this->name_full,
         ]);
         if($user_id) {
             $query->andFilterWhere([

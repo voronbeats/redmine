@@ -19,6 +19,7 @@ use common\models\Notification;
  * @property string|null $ocenka_truda
  * @property int|null $user_id
  * @property int|null $readliness
+ * @property string|null $name_full
  */
 class Task extends \yii\db\ActiveRecord
 {
@@ -48,12 +49,12 @@ class Task extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['name_full'], 'required'],
             [['status', 'prioritet', 'user_id', 'readliness', 'author_id', 'parent_id'], 'integer'],
             [['date_add', 'date_end'], 'safe'],
             ['date_add','default','value'=>date('Y-m-d H:i:s')],
             [['text'], 'string',],          
-            [['name', 'ocenka_truda'], 'string', 'max' => 200], 
+            [['name', 'ocenka_truda', 'name_full'], 'string', 'max' => 200], 
             ['date_add','default','value'=> date('Y-m-d h:i:s')],
         ];
     }
@@ -80,7 +81,7 @@ class Task extends \yii\db\ActiveRecord
             'author' => 'Исполнитель',
             'customer' => 'Автор задачи',
             'parent_id' => 'Родительская задача',
-
+            'name_full' => 'Полное название задачи'
         ];
     }
     
@@ -90,10 +91,10 @@ class Task extends \yii\db\ActiveRecord
                 $this->author_id = Yii::$app->user->id;
             }
             if (!$this->text) {
-                $this->text = $this->name;
-                $this->name = mb_strimwidth($this->name, 0, 40 , "...");
+                $this->text = $this->name_full;
+                $this->name = mb_strimwidth($this->name_full, 0, 40 , "...");
             }else{
-                $this->name = mb_strimwidth($this->name, 0, 40 , "...");
+                $this->name = mb_strimwidth($this->name_full, 0, 40 , "...");
             }
             return true;
 
@@ -114,7 +115,7 @@ class Task extends \yii\db\ActiveRecord
                $text = 'Здравствуйте, у вас обновлена задача:' ;
             }
             $text .= "\n";
-            $text .= '<a href="' . 'http://redmine.dumz.ru/task/view?id='.$this->id . '">'.$this->name.'</a>';
+            $text .= '<a href="' . 'http://redmine.dumz.ru/task/view?id='.$this->id . '">'.$this->name_full.'</a>';
             $notif->text = ($text);
             $notif->date_add = date('Y-m-d h:i:s');
             $notif->user_id = $this->user_id;
