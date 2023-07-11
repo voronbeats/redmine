@@ -34,6 +34,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'user_id',
                 'filter' => $users,
                 'format' => 'raw',
+                'value' =>
+                function ($data) {
+                    return '<span class="author_email">' . $data['author']['username'] . '</span>';
+                },
+                'filterInputOptions' => [
+                    'class' => 'form-control author_input',
+                    'id' => null,
+                ],
             ],
             'date',
             'text:ntext',
