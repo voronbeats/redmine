@@ -148,6 +148,6 @@ class Task extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(),['id'=>'author_id']);
     }
     public function getParent() {
-        return $this->hasMany(Task::className(),['parent_id'=>'id'])->where(['!=', 'status', '5']);
+        return $this->hasMany(Task::className(),['parent_id'=>'id'])->where(['!=', 'status', '5'])->orderBy(['STATUS' => 'SORT_DESC']);
     }
 }
