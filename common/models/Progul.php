@@ -46,4 +46,7 @@ class Progul extends \yii\db\ActiveRecord
             'text' => 'Причина',
         ];
     }
+    public function getAuthor() {
+        return $this->hasOne(User::className(),['id'=>'user_id']);
+    }
 }
