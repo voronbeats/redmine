@@ -9,6 +9,7 @@ use yii\widgets\ActiveForm;
 /** @var yii\web\View $this */
 /** @var common\models\Comments $model */
 /** @var yii\widgets\ActiveForm $form */
+require_once dirname(__DIR__) ."/namescript/Library/NCLNameCaseRu.php";
 ?>
 <?php Pjax::begin(); ?>
 <div class="comments-form">
@@ -58,9 +59,17 @@ use yii\widgets\ActiveForm;
 
 <? if ($comments) { ?>
     <? foreach ($comments as $com) { ?>
+        <?php
+        $name = $com->recipient->username;
+        $case = new NCLNameCaseRu();
+        ?>
         <? if ($com->user->id == Yii::$app->user->identity->id) { ?>
             <div class="com-container">
                 <span class="user-comment-to" data-userId="<?= $com->user->id ?>" data-id="<?= $com->id ?>"><? if ($com->user->id) { ?>Вы:<? } ?></span>
+                <?if($com->to !== Yii::$app->user->identity->id) {?>
+                    <?$array = $case->q($name)?>
+                    <span>Ответил: <? print_r($array['2'])?></span>
+                <?}?>
                 <? if ($com->next($com->task_id, $com->id)) { ?>
                     <i class="fa fa-pencil redact" aria-hidden="true"></i>
                 <? } ?>
@@ -78,6 +87,10 @@ use yii\widgets\ActiveForm;
         <? } else { ?>
             <div class="com-container-our">
                 <span class="user-comment-to" data-userId="<?= $com->user->id ?>" data-id="<?= $com->user->id ?>"><?= $com->user->username ?>:</span>
+                <?if($com->to == Yii::$app->user->identity->id) {?>
+                    <?$array = $case->q($name)?>
+                    <span>Ответил: <? print_r($array['2'])?></span>
+                <?}?>
                 <span>
                     <?= $com->text ?>
                 </span>
