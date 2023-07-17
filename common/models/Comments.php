@@ -111,4 +111,7 @@ class Comments extends \yii\db\ActiveRecord
         }
         return true;
     }
+    public function getRecipient() {
+        return $this->hasOne(User::classname(), ['id'=>'to']);
+    }
 }
